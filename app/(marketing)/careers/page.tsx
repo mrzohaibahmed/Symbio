@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/layout";
 import {
   FadeUp,
@@ -6,7 +6,7 @@ import {
   StaggerItem,
 } from "@/components/animations";
 import { PageHero, CTASection, FAQAccordion } from "@/components/sections/shared";
-import { JobCard } from "@/components/careers";
+import { JobCard, HiringProcessSection } from "@/components/careers";
 import {
   careersBenefits,
   careersCulture,
@@ -14,7 +14,6 @@ import {
   careersHero,
   careersWhyJoin,
   getOpenJobs,
-  hiringProcess,
 } from "@/data";
 import { featureIconMap } from "@/lib/icons";
 import { companyInfo } from "@/constants";
@@ -109,7 +108,7 @@ export default function CareersPage() {
         ]}
       />
 
-      <Section aria-labelledby="why-join-heading">
+      <Section aria-labelledby="why-join-heading" muted className="border-y border-border/40">
         <FadeUp>
           <SectionHeading
             id="why-join-heading"
@@ -119,18 +118,41 @@ export default function CareersPage() {
             align="center"
           />
         </FadeUp>
-        <StaggerContainer className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {careersWhyJoin.map((item) => {
+        <StaggerContainer className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          {careersWhyJoin.map((item, index) => {
             const Icon = featureIconMap[item.icon];
+            const formattedNumber = String(index + 1).padStart(2, "0");
+
             return (
               <StaggerItem key={item.id}>
-                <article className="h-full rounded-xl border border-border bg-card p-6 shadow-sm">
-                  <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-accent text-primary">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
-                  </span>
-                  <h3 className="heading-font text-lg font-semibold">{item.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
-                </article>
+                <div className="group relative flex h-full flex-col justify-between border-t border-border/60 pt-8 pb-4 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[2px]">
+                  {/* Subtle top accent line that expands on hover */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute -top-[1px] left-0 h-[2px] w-0 bg-accent transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-full"
+                  />
+
+                  <div>
+                    {/* Editorial Header: Number & Complementary Icon */}
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="editorial-number font-mono text-3xl font-medium tracking-tight text-muted-foreground/35 transition-colors duration-300 group-hover:text-accent/80">
+                        {formattedNumber}
+                      </span>
+
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/8 text-accent border border-accent/15 transition-colors duration-300 group-hover:bg-accent/15 group-hover:border-accent/30 group-hover:text-accent-light">
+                        <Icon className="h-4.5 w-4.5" aria-hidden="true" />
+                      </div>
+                    </div>
+
+                    {/* Title & Description */}
+                    <h3 className="heading-font text-xl font-bold tracking-tight text-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-accent-light">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground max-w-prose">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
               </StaggerItem>
             );
           })}
@@ -210,31 +232,7 @@ export default function CareersPage() {
         )}
       </Section>
 
-      <Section aria-labelledby="hiring-process-heading">
-        <FadeUp>
-          <SectionHeading
-            id="hiring-process-heading"
-            eyebrow="Hiring Process"
-            title="What to expect"
-            description="A clear, respectful process designed to find mutual fit."
-            align="center"
-          />
-        </FadeUp>
-        <ol className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {hiringProcess.map((step) => (
-            <li
-              key={step.id}
-              className="rounded-xl border border-border bg-card p-5 shadow-sm"
-            >
-              <span className="heading-font inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
-                {step.step}
-              </span>
-              <h3 className="heading-font mt-4 text-lg font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>
-            </li>
-          ))}
-        </ol>
-      </Section>
+      <HiringProcessSection />
 
       <Section aria-labelledby="careers-faq-heading" muted>
         <FadeUp>
