@@ -187,16 +187,32 @@ export function AboutTeamSection() {
                     }
                   }}
                   className={cn(
-                    "group relative flex w-full items-center gap-3 py-3.5 px-3 text-left transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+                    "group relative flex w-full items-center gap-3 py-3.5 px-3 text-left transition-all duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
                     isActive
-                      ? "bg-accent/10 dark:bg-accent/15 border-l-4 border-accent pl-3.5"
-                      : "hover:bg-accent/5",
+                      ? "bg-accent/5 text-accent font-bold"
+                      : "text-foreground/75 hover:text-foreground hover:bg-muted/40",
                   )}
                 >
+                  {/* 3px Active / Hover Accent Indicator Bar */}
+                  <motion.span
+                    className={cn(
+                      "absolute left-0 top-2 bottom-2 w-[3px] rounded-full transition-all duration-300",
+                      isActive
+                        ? "bg-accent opacity-100 shadow-[0_0_10px_rgba(15,157,122,0.4)]"
+                        : "bg-accent/30 opacity-0 group-hover:opacity-100"
+                    )}
+                    initial={false}
+                    animate={{
+                      scaleY: isActive ? 1 : 0.5,
+                    }}
+                    transition={{ duration: 0.2 }}
+                    aria-hidden="true"
+                  />
+
                   {/* Thumbnail */}
                   <div
                     className={cn(
-                      "relative h-9 w-9 shrink-0 overflow-hidden rounded-full border-2 transition-all duration-200",
+                      "relative h-9 w-9 shrink-0 overflow-hidden rounded-full border-2 transition-all duration-300 ml-1.5 group-hover:translate-x-1.5",
                       isActive
                         ? "border-accent shadow-sm shadow-accent/20"
                         : "border-border/40 group-hover:border-accent/50",
@@ -211,7 +227,7 @@ export function AboutTeamSection() {
                     />
                   </div>
 
-                  <div className="min-w-0 flex-1">
+                  <div className="min-w-0 flex-1 transition-transform duration-300 group-hover:translate-x-1.5">
                     <p
                       className={cn(
                         "text-sm font-bold leading-snug truncate transition-colors",
@@ -244,20 +260,21 @@ export function AboutTeamSection() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeMember.id + "-photo"}
-              initial={{ opacity: 0, scale: 0.97 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-border/40 shadow-lg">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[22px] border border-border/40 shadow-xl group">
                 <Image
                   src={activeMember.photo}
                   alt={activeMember.photoAlt}
                   fill
                   sizes="(max-width: 1024px) 100vw, 25vw"
-                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                   priority
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
               </div>
 
               {/* Below-image metadata */}
@@ -287,7 +304,7 @@ export function AboutTeamSection() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="space-y-6"
             >
               {/* Name & Title */}

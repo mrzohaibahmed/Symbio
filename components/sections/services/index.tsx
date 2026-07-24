@@ -220,13 +220,29 @@ export function ServicesSection({ className }: ServicesSectionProps) {
                   }
                 }}
                 className={cn(
-                  "group relative flex w-full items-center justify-between py-5 px-4 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+                  "group relative flex w-full items-center justify-between py-4 px-4 text-left transition-all duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
                   isActive
-                    ? "bg-accent/10 dark:bg-accent/15 border-l-4 border-accent pl-5"
-                    : "hover:bg-accent/5 hover:pl-5"
+                    ? "bg-accent/5 text-accent font-bold"
+                    : "text-foreground/75 hover:text-foreground hover:bg-muted/40"
                 )}
               >
-                <div className="flex items-baseline gap-3">
+                {/* 3px Active / Hover Accent Indicator Bar */}
+                <motion.span
+                  className={cn(
+                    "absolute left-0 top-2.5 bottom-2.5 w-[3px] rounded-full transition-all duration-300",
+                    isActive
+                      ? "bg-accent opacity-100 shadow-[0_0_10px_rgba(15,157,122,0.4)]"
+                      : "bg-accent/30 opacity-0 group-hover:opacity-100"
+                  )}
+                  initial={false}
+                  animate={{
+                    scaleY: isActive ? 1 : 0.5,
+                  }}
+                  transition={{ duration: 0.2 }}
+                  aria-hidden="true"
+                />
+
+                <div className="flex items-baseline gap-3.5 pl-2.5 transition-transform duration-300 group-hover:translate-x-1.5">
                   <span
                     className={cn(
                       "font-mono text-xs font-bold tracking-widest transition-colors",
@@ -271,10 +287,10 @@ export function ServicesSection({ className }: ServicesSectionProps) {
               role="tabpanel"
               id={`service-panel-${activeService.id}`}
               aria-labelledby={`service-tab-${activeService.id}`}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="grid gap-8 lg:grid-cols-12 lg:items-center"
             >
               {/* Content Detail */}
@@ -322,10 +338,10 @@ export function ServicesSection({ className }: ServicesSectionProps) {
                 </div>
 
                 <div className="pt-4">
-                  <Button asChild size="lg" className="rounded-xl px-7 font-bold">
+                  <Button asChild size="lg" className="rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-accent-dark hover:shadow-accent/30 active:scale-[0.98]">
                     <Link href={`/services/${activeService.slug}`}>
-                      Explore {activeService.title}
-                      <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                      <span>Explore {activeService.title}</span>
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true" />
                     </Link>
                   </Button>
                 </div>
@@ -333,18 +349,18 @@ export function ServicesSection({ className }: ServicesSectionProps) {
 
               {/* Dynamic Image Container */}
               <div className="lg:col-span-5">
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border/40 shadow-xl">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px] border border-border/40 shadow-xl group">
                   <Image
                     src={activeService.image}
                     alt={activeService.imageAlt}
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                     priority
                   />
                   <div
                     aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"
+                    className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
                   />
                 </div>
               </div>

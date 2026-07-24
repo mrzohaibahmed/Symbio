@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Container } from "@/components/layout";
+import { Container, SectionTransition } from "@/components/layout";
 import { FadeUp, SlideLeft } from "@/components/animations";
 import { Breadcrumb } from "@/components/sections/shared/breadcrumb";
 import { cn } from "@/utils";
@@ -72,6 +72,8 @@ export function PageHero({
           </div>
         </SlideLeft>
       </Container>
+
+      <SectionTransition />
     </section>
   );
 }

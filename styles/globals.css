@@ -70,7 +70,7 @@
   --radius: 0.75rem;
   --radius-card: 1rem;
   --container-max: 80rem;
-  --header-height: 4.5rem;
+  --header-height: 5.5rem;
 
   /* Typography scale (fluid, editorial) */
   --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.8125rem);
@@ -174,6 +174,7 @@
 /* -------------------------------------------------------------------------- */
 
 @layer base {
+
   *,
   *::before,
   *::after {
@@ -207,7 +208,7 @@
   h6 {
     font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.12;
     letter-spacing: -0.025em;
     color: var(--foreground);
   }
@@ -268,8 +269,7 @@
   /* Scrollbar — subtle navy */
   * {
     scrollbar-width: thin;
-    scrollbar-color: color-mix(in srgb, var(--color-primary) 35%, var(--border))
-      transparent;
+    scrollbar-color: color-mix(in srgb, var(--color-primary) 35%, var(--border)) transparent;
   }
 
   *::-webkit-scrollbar {
@@ -341,15 +341,15 @@
 
   /* Section padding */
   .section-padding {
-    padding-block: clamp(4rem, 7vw, 7rem);
+    padding-block: clamp(4.5rem, 8vw, 8rem);
   }
 
   .section-padding-lg {
-    padding-block: clamp(5rem, 9vw, 9rem);
+    padding-block: clamp(5.5rem, 10vw, 10rem);
   }
 
   .section-padding-sm {
-    padding-block: clamp(2.5rem, 4vw, 4rem);
+    padding-block: clamp(3rem, 5vw, 4.5rem);
   }
 
   /* Editorial design system helpers */
@@ -420,15 +420,15 @@
 
   /* Premium card hover */
   .card-hover {
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 0.3s ease;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s ease;
   }
 
   .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px -15px rgba(11, 31, 58, 0.15),
-                0 8px 20px -8px rgba(15, 157, 122, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px -12px rgba(11, 31, 58, 0.1),
+      0 6px 16px -6px rgba(15, 157, 122, 0.06);
   }
 
   /* Eyebrow decoration */
@@ -476,6 +476,7 @@
     from {
       transform: translateX(0);
     }
+
     to {
       transform: translateX(-50%);
     }
@@ -487,6 +488,7 @@
       height: 0;
       opacity: 0;
     }
+
     to {
       height: var(--radix-accordion-content-height);
       opacity: 1;
@@ -498,6 +500,7 @@
       height: var(--radix-accordion-content-height);
       opacity: 1;
     }
+
     to {
       height: 0;
       opacity: 0;
@@ -514,9 +517,12 @@
 
   /* Pulse glow for accent elements */
   @keyframes pulse-glow {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: 0 0 0 0 rgba(15, 157, 122, 0.3);
     }
+
     50% {
       box-shadow: 0 0 20px 4px rgba(15, 157, 122, 0.15);
     }
@@ -526,12 +532,13 @@
     animation: pulse-glow 3s ease-in-out infinite;
   }
 
-  /* Geometric grid pattern */
+  /* Geometric grid pattern with subtle ambient radial depth */
   .pattern-grid {
     background-image:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(15, 157, 122, 0.035), transparent 75%),
       linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background-size: 100% 100%, 60px 60px, 60px 60px;
   }
 
   .pattern-dots {

@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "@/utils";
+import { SectionTransition } from "./SectionTransition";
 
 export interface PageHeaderProps {
   eyebrow?: string;
@@ -52,6 +53,8 @@ export function PageHeader({
         ) : null}
         {children}
       </div>
+
+      <SectionTransition />
     </section>
   );
 }

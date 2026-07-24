@@ -90,13 +90,29 @@ export function AboutCertificationsSection() {
                   }
                 }}
                 className={cn(
-                  "group relative flex w-full items-start justify-between gap-3 py-5 px-4 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
+                  "group relative flex w-full items-start justify-between gap-3 py-4 px-4 text-left transition-all duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
                   isActive
-                    ? "bg-accent/10 dark:bg-accent/15 border-l-4 border-accent pl-5"
-                    : "hover:bg-accent/5 hover:pl-5",
+                    ? "bg-accent/5 text-accent font-bold"
+                    : "text-foreground/75 hover:text-foreground hover:bg-muted/40",
                 )}
               >
-                <div className="flex items-start gap-3 min-w-0">
+                {/* 3px Active / Hover Accent Indicator Bar */}
+                <motion.span
+                  className={cn(
+                    "absolute left-0 top-2.5 bottom-2.5 w-[3px] rounded-full transition-all duration-300",
+                    isActive
+                      ? "bg-accent opacity-100 shadow-[0_0_10px_rgba(15,157,122,0.4)]"
+                      : "bg-accent/30 opacity-0 group-hover:opacity-100"
+                  )}
+                  initial={false}
+                  animate={{
+                    scaleY: isActive ? 1 : 0.5,
+                  }}
+                  transition={{ duration: 0.2 }}
+                  aria-hidden="true"
+                />
+
+                <div className="flex items-start gap-3.5 min-w-0 pl-2.5 transition-transform duration-300 group-hover:translate-x-1.5">
                   <span
                     className={cn(
                       "font-mono text-xs font-bold tracking-widest pt-1 shrink-0 transition-colors",
@@ -154,10 +170,10 @@ export function AboutCertificationsSection() {
               role="tabpanel"
               id={`cert-panel-${active.id}`}
               aria-labelledby={`cert-tab-${active.id}`}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="space-y-8"
             >
               {/* Badge Row */}
@@ -212,10 +228,10 @@ export function AboutCertificationsSection() {
 
               {/* CTA */}
               <div className="pt-2">
-                <Button asChild size="lg" className="rounded-xl px-7 font-bold">
+                <Button asChild size="lg" className="rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/20 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-accent-dark hover:shadow-accent/30 active:scale-[0.98]">
                   <Link href="/contact">
-                    Schedule a Consultation
-                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                    <span>Schedule a Consultation</span>
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" aria-hidden="true" />
                   </Link>
                 </Button>
               </div>

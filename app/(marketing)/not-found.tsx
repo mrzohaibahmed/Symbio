@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SectionTransition } from "@/components/layout";
 
 export default function MarketingNotFound() {
   return (
@@ -29,6 +30,8 @@ export default function MarketingNotFound() {
           </Link>
         </div>
       </div>
+
+      <SectionTransition />
     </section>
   );
 }

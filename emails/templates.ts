@@ -72,16 +72,7 @@ export function contactAdminEmail(payload: {
   };
 }
 
-export function newsletterWelcomeEmail(email: string): { subject: string; html: string } {
-  return {
-    subject: "Welcome to Symbio Advisory insights",
-    html: layout(
-      "Newsletter welcome",
-      `<h1 style="margin:0 0 12px;font-size:22px;">You're subscribed</h1>
-       <p style="margin:0 0 12px;line-height:1.6;color:#6B7280;">Thanks for joining our newsletter (${email}). Expect practical insights on advisory, tax, and digital transformation.</p>`,
-    ),
-  };
-}
+
 
 export function careerConfirmationEmail(
   name: string,
@@ -154,6 +145,18 @@ export function consultationAdminEmail(payload: {
        <p><strong>Service:</strong> ${payload.interestedService}</p>
        <p><strong>Preferred:</strong> ${payload.preferredDate} at ${payload.preferredTime}</p>
        <p style="white-space:pre-wrap;line-height:1.6;color:#6B7280;">${payload.message}</p>`,
+    ),
+  };
+}
+
+export function newsletterWelcomeEmail(email: string): { subject: string; html: string } {
+  return {
+    subject: "Welcome to Symbio Advisory Insights",
+    html: layout(
+      "Welcome to Symbio Advisory Insights",
+      `<h1 style="margin:0 0 12px;font-size:22px;">Welcome aboard!</h1>
+       <p style="margin:0 0 12px;line-height:1.6;color:#6B7280;">Thank you for subscribing with <strong>${email}</strong> to Symbio Advisory updates and insights.</p>
+       <p style="margin:0;line-height:1.6;color:#6B7280;">We look forward to sharing business, financial, and regulatory guidance with you.</p>`,
     ),
   };
 }

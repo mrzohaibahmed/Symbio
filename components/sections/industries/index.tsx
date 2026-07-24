@@ -1,58 +1,30 @@
-import {
-  ShoppingBag,
-  Scale,
-  HardHat,
-  Factory,
-  UtensilsCrossed,
-  Shirt,
-  Building2,
-  Sparkles,
-  Leaf,
-  Droplets,
-  HeartHandshake,
-  Scissors,
-  GraduationCap,
-  Wifi,
-  Hospital,
-  CheckCircle2,
-  type LucideIcon,
-} from "lucide-react";
+"use client";
+
+import * as React from "react";
+import Link from "next/link";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Section, SectionHeading } from "@/components/layout";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/animations";
-import {
-  portfolioContent,
-  portfolioEngagements,
-  sectorIndustriesData,
-} from "@/data";
+import { portfolioContent, portfolioEngagements } from "@/data";
+import { industriesHeaderContent, industriesData } from "./constants";
+import { IndustryNav } from "./IndustryNav";
+import { IndustryPreviewPanel } from "./IndustryPreviewPanel";
 import type { IndustriesSectionProps } from "./types";
-
-const sectorIconMap: Record<string, LucideIcon> = {
-  ShoppingBag,
-  Scale,
-  HardHat,
-  Factory,
-  UtensilsCrossed,
-  Shirt,
-  Building2,
-  Sparkles,
-  Leaf,
-  Droplets,
-  HeartHandshake,
-  Scissors,
-  GraduationCap,
-  Wifi,
-  Hospital,
-};
 
 export function IndustriesSection({
   className,
   showEngagements = false,
 }: IndustriesSectionProps) {
+  const [activeId, setActiveId] = React.useState<string>(industriesData[0].id);
+
+  const activeIndustry =
+    industriesData.find((item) => item.id === activeId) || industriesData[0];
+
   return (
     <Section aria-labelledby="sectors-heading" className={className}>
-      {/* Selected Engagements (Only when explicitly enabled) */}
+      {/* Selected Engagements Portfolio (When explicitly enabled for /industries page) */}
       {showEngagements ? (
-        <>
+        <div className="mb-20 border-b border-border/40 pb-16">
           <FadeUp>
             <SectionHeading
               id="portfolio-heading"
@@ -63,10 +35,10 @@ export function IndustriesSection({
             />
           </FadeUp>
 
-          <StaggerContainer className="mt-12 divide-y divide-border/40 border-y border-border/40 mb-24">
+          <StaggerContainer className="mt-10 divide-y divide-border/40 border-y border-border/40">
             {portfolioEngagements.map((item) => (
               <StaggerItem key={item.id}>
-                <article className="group py-8 transition-colors duration-200">
+                <article className="group py-7 transition-colors duration-200">
                   <div className="grid gap-6 md:grid-cols-12 md:items-center">
                     <div className="md:col-span-5">
                       <span className="inline-block text-xs font-bold uppercase tracking-wider text-accent mb-1">
@@ -97,43 +69,91 @@ export function IndustriesSection({
               </StaggerItem>
             ))}
           </StaggerContainer>
-        </>
+        </div>
       ) : null}
 
-      {/* Enterprise "Sectors & Industry Experience" Grid */}
-      <div>
-        <FadeUp>
-          <SectionHeading
-            id="sectors-heading"
-            eyebrow={portfolioContent.industriesEyebrow}
-            title={portfolioContent.industriesTitle}
-            description={portfolioContent.industriesDescription}
-            align="left"
-          />
-        </FadeUp>
+      {/* Main Enterprise "Sectors & Industry Experience" Explorer */}
+      <div className="relative">
+        {/* Subtle Ambient Background Depth & Architectural Grid */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -inset-x-6 -top-12 -bottom-12 rounded-3xl pattern-grid opacity-30"
+        />
 
-        <StaggerContainer className="mt-14 grid grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-          {sectorIndustriesData.map((item) => {
-            const Icon = sectorIconMap[item.iconName] || Building2;
+        <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-14 lg:items-start">
+          {/* LEFT SIDE (40% Desktop - Sticky Header & Stats) */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28">
+            <FadeUp>
+              <span className="eyebrow block mb-3 text-accent">
+                {industriesHeaderContent.label}
+              </span>
+              <h2
+                id="sectors-heading"
+                className="heading-font text-balance text-3xl font-extrabold tracking-tight text-foreground md:text-4xl lg:text-[2.6rem] lg:leading-[1.12]"
+              >
+                {industriesHeaderContent.title}
+              </h2>
+              <p className="mt-5 text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">
+                {industriesHeaderContent.description}
+              </p>
+            </FadeUp>
 
-            return (
-              <StaggerItem key={item.id}>
-                <div className="group relative border-b border-border/40 pb-4 pt-2 transition-all duration-200">
-                  <div className="flex items-center gap-3">
-                    <span className="shrink-0 text-accent transition-transform duration-200 group-hover:scale-110">
-                      <Icon className="h-4.5 w-4.5" aria-hidden="true" />
+            {/* Small Trust Statistics */}
+            <FadeUp delay={0.15}>
+              <div className="mt-8 grid grid-cols-3 gap-3 border-y border-border/50 py-6">
+                {industriesHeaderContent.stats.map((stat) => (
+                  <div key={stat.label}>
+                    <span className="heading-font block text-2xl font-extrabold text-accent md:text-3xl">
+                      {stat.value}
                     </span>
-                    <span className="heading-font text-base font-bold text-foreground transition-colors duration-200 group-hover:text-accent">
-                      {item.title}
+                    <span className="mt-1 block text-xs font-medium text-muted-foreground leading-tight">
+                      {stat.label}
                     </span>
                   </div>
-                  {/* Subtle underline hover animation */}
-                  <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent transition-all duration-300 group-hover:w-full" />
-                </div>
-              </StaggerItem>
-            );
-          })}
-        </StaggerContainer>
+                ))}
+              </div>
+            </FadeUp>
+
+            {/* CTA Button */}
+            <FadeUp delay={0.25}>
+              <div className="mt-8">
+                <Link
+                  href={industriesHeaderContent.ctaHref}
+                  className="group inline-flex items-center gap-2.5 rounded-xl bg-accent px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/25 active:scale-[0.98]"
+                >
+                  <span>{industriesHeaderContent.ctaLabel}</span>
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </div>
+            </FadeUp>
+          </div>
+
+          {/* RIGHT SIDE (60% Desktop - Interactive Nav & Dynamic Preview) */}
+          <div className="lg:col-span-7 flex flex-col gap-10">
+            {/* Interactive 2-Column Vertical Navigation */}
+            <div>
+              <div className="mb-4 flex items-center justify-between">
+                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                  Select Industry Sector ({industriesData.length})
+                </span>
+                <span className="hidden sm:inline-block text-xs font-medium text-accent">
+                  Interactive Preview Below
+                </span>
+              </div>
+              <IndustryNav
+                industries={industriesData}
+                activeId={activeId}
+                onSelect={setActiveId}
+              />
+            </div>
+
+            {/* Dynamic Preview Panel */}
+            <IndustryPreviewPanel industry={activeIndustry} />
+          </div>
+        </div>
       </div>
     </Section>
   );

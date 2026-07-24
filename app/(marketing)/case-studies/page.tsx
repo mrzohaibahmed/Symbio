@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { TrendingUp, Users, Target, BarChart3, CheckCircle } from "lucide-react";
-import { Section, SectionHeading } from "@/components/layout";
+import { Section, SectionHeading, SectionTransition } from "@/components/layout";
 import { CTASection } from "@/components/sections/shared";
 import {
   FadeUp,
@@ -162,6 +162,7 @@ export default function CaseStudiesPage() {
             Explore how Symbio Advisory helps businesses transform their operations, improve financial clarity, and achieve sustainable growth.
           </p>
         </div>
+        <SectionTransition />
       </section>
 
       <Section aria-labelledby="case-studies-heading">

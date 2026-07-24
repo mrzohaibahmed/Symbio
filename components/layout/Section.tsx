@@ -31,7 +31,7 @@ export const Section = React.forwardRef<HTMLElement, SectionProps>(
 
     return (
       <Comp
-        ref={ref as React.Ref<any>}
+        ref={ref as React.Ref<HTMLDivElement>}
         className={cn(
           padClass,
           muted && "bg-surface",

@@ -111,37 +111,7 @@ export function Footer() {
           </FooterColumn>
         </div>
 
-        {/* Newsletter Section */}
-        <div className="mt-14 rounded-2xl border border-white/10 bg-white/5 p-6 md:flex md:items-center md:justify-between md:gap-8 md:p-8">
-          <div className="max-w-md">
-            <h3 className="heading-font text-lg font-bold text-white">
-              Stay Informed
-            </h3>
-            <p className="mt-1 text-sm text-white/60">
-              Subscribe to our newsletter for advisory insights, tax updates, and industry perspectives.
-            </p>
-          </div>
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="mt-5 flex w-full max-w-md gap-2.5 md:mt-0"
-          >
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              placeholder="Enter your email address"
-              className="h-11 w-full rounded-xl border border-white/15 bg-white/10 px-4 text-sm text-white placeholder:text-white/40 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
-            />
-            <button
-              type="submit"
-              className="h-11 shrink-0 rounded-xl bg-accent px-6 text-sm font-semibold text-white transition-colors duration-200 hover:bg-accent-dark"
-            >
-              Subscribe
-            </button>
-          </form>
-        </div>
+
 
         {/* Bottom Bar */}
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">

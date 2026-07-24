@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { Container } from "@/components/layout";
+import { Container, SectionTransition } from "@/components/layout";
 import {
   FadeUp,
   FadeIn,
@@ -98,28 +98,28 @@ export function HeroSection({ className }: HeroSectionProps) {
           </FadeUp>
 
           <FadeUp delay={0.16}>
-            <p className="mt-7 max-w-2xl text-pretty text-lg leading-relaxed text-white/60 md:text-xl">
+            <p className="mt-7 max-w-2xl text-pretty text-lg leading-[1.7] tracking-[0.01em] text-white/70 md:text-xl">
               {heroContent.paragraph}
             </p>
           </FadeUp>
 
           <FadeUp delay={0.24}>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <MagneticButton strength={5}>
+              <MagneticButton strength={4}>
                 <Link
                   href={heroContent.primaryCta.href}
-                  className="group inline-flex h-14 items-center justify-center gap-2.5 rounded-xl bg-accent px-8 text-base font-semibold text-white transition-all duration-250 hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/20 hover:-translate-y-0.5"
+                  className="group inline-flex h-14 items-center justify-center gap-2.5 rounded-xl bg-accent px-8 text-base font-semibold text-white transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-accent-dark hover:shadow-xl hover:shadow-accent/25 hover:-translate-y-0.5 active:scale-[0.98]"
                 >
                   {heroContent.primaryCta.label}
                   <ArrowRight
-                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                    className="h-4 w-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
                     aria-hidden="true"
                   />
                 </Link>
               </MagneticButton>
               <Link
                 href={heroContent.secondaryCta.href}
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-white/20 px-8 text-base font-semibold text-white/90 transition-all duration-200 hover:border-white/40 hover:bg-white/5 hover:text-white"
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border border-white/20 px-8 text-base font-semibold text-white/90 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white/40 hover:bg-white/5 hover:text-white active:scale-[0.98]"
               >
                 {heroContent.secondaryCta.label}
               </Link>
@@ -138,10 +138,7 @@ export function HeroSection({ className }: HeroSectionProps) {
       </Container>
 
       {/* Bottom gradient fade */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"
-      />
+      <SectionTransition />
     </section>
   );
 }

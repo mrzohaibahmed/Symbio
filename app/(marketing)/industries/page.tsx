@@ -6,7 +6,7 @@ import {
   StaggerContainer,
   StaggerItem,
 } from "@/components/animations";
-import { Section, SectionHeading } from "@/components/layout";
+import { Section, SectionHeading, SectionTransition } from "@/components/layout";
 import { companyInfo } from "@/constants";
 import { siteConfig } from "@/lib/seo";
 
@@ -88,6 +88,7 @@ export default function IndustriesPage() {
             Our portfolio highlights associate firms, technology partners and advisory clients across accounting, compliance, ERP and legal services.
           </p>
         </div>
+        <SectionTransition />
       </section>
 
       <IndustriesSection showEngagements />

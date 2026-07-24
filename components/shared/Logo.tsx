@@ -46,7 +46,7 @@ export function Logo({
     <Link
       href={href}
       className={cn(
-        "inline-flex shrink-0 items-center rounded-sm transition-opacity hover:opacity-90",
+        "inline-flex shrink-0 items-center rounded-md transition-all duration-300 hover:opacity-95 hover:brightness-105 active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent",
         className,
       )}
       aria-label={`${companyInfo.name} home`}
@@ -61,8 +61,8 @@ export function Logo({
         className={cn(
           "object-contain",
           isMark
-            ? "h-9 w-9"
-            : "h-9 w-auto max-h-10 max-w-[10.5rem] sm:max-w-[12rem]",
+            ? "h-11 w-11 sm:h-12 sm:w-12"
+            : "h-11 sm:h-12 md:h-[50px] w-auto max-h-13 max-w-[12rem] sm:max-w-[14rem]",
         )}
       />
     </Link>

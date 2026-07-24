@@ -4,8 +4,7 @@ export type { LoadingButtonProps } from "./LoadingButton";
 export { SuccessDialog, ErrorDialog, StatusDialog } from "./StatusDialog";
 export type { StatusDialogProps } from "./StatusDialog";
 export { ContactForm } from "./ContactForm";
-export { NewsletterForm } from "./NewsletterForm";
-export type { NewsletterFormProps } from "./NewsletterForm";
+
 export { ConsultationForm } from "./ConsultationForm";
 export { ApplicationForm } from "./ApplicationForm";
 export type { ApplicationFormProps } from "./ApplicationForm";

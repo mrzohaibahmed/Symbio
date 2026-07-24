@@ -19,7 +19,7 @@ import {
   Building2,
 } from "lucide-react";
 import { FaLinkedinIn } from "react-icons/fa6";
-import { Section } from "@/components/layout";
+import { Section, SectionTransition } from "@/components/layout";
 import { FadeUp } from "@/components/animations";
 import { ContactForm, ConsultationForm } from "@/components/forms";
 import { companyInfo } from "@/constants";
@@ -95,7 +95,7 @@ export function ContactInteractiveSection() {
         <div className="container-shell relative">
           <p className="eyebrow mb-4 text-accent-light">Get In Touch</p>
           <h1 className="heading-font max-w-4xl text-balance text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">
-            Let's Start a Conversation
+            Let&apos;s Start a Conversation
           </h1>
           <p className="mt-6 max-w-3xl text-pretty text-lg leading-relaxed text-white/70 md:text-xl">
             Whether you need accounting, tax advisory, audit, ERP implementation, compliance, or strategic business consulting, our specialists are ready to understand your business and recommend the right solution.
@@ -121,6 +121,8 @@ export function ContactInteractiveSection() {
             </Button>
           </div>
         </div>
+
+        <SectionTransition />
       </section>
 
       {/* Main 2-Column Split Section (40% Credibility / 60% Form) */}
@@ -322,7 +324,7 @@ export function ContactInteractiveSection() {
                           Send Us a Message
                         </h3>
                         <p className="mt-1 text-sm text-muted-foreground">
-                          Share your business inquiry and we'll route it to the appropriate practice leader.
+                          Share your business inquiry and we&apos;ll route it to the appropriate practice leader.
                         </p>
                       </div>
                       <ContactForm />

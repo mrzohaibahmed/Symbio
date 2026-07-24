@@ -1,8 +1,8 @@
 export {
   contactConfirmationEmail,
   contactAdminEmail,
-  newsletterWelcomeEmail,
   careerConfirmationEmail,
   careerAdminEmail,
   consultationAdminEmail,
+  newsletterWelcomeEmail,
 } from "./templates";

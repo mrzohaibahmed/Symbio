@@ -15,6 +15,8 @@ export interface NewsletterFormData {
   website?: string;
 }
 
+
+
 export interface CareerApplicationData {
   fullName: string;
   email: string;

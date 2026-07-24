@@ -6,12 +6,11 @@ import {
   StaggerItem,
 } from "@/components/animations";
 import { CTASection, FAQAccordion } from "@/components/sections/shared";
+import { AboutOfficesSection } from "@/components/sections/about";
 import {
   ContactInteractiveSection,
-  ContactLocationCard,
-  MapSection,
 } from "@/components/contact";
-import { NewsletterForm } from "@/components/forms";
+
 import {
   contactFaqs,
   offices,
@@ -104,28 +103,8 @@ export default function ContactPage() {
       {/* Editorial Hero, 40/60 Split, Stats, Timeline & Tabbed Single Form Container */}
       <ContactInteractiveSection />
 
-      {/* Offices & Locations */}
-      <Section aria-labelledby="offices-heading" muted>
-        <FadeUp>
-          <SectionHeading
-            id="offices-heading"
-            eyebrow="Offices"
-            title="Visit our locations"
-            description="Connect with Symbio Advisory across Pakistan and international partner hubs."
-            align="center"
-          />
-        </FadeUp>
-        <StaggerContainer className="grid gap-6 lg:grid-cols-2">
-          {offices.map((office) => (
-            <StaggerItem key={office.id}>
-              <ContactLocationCard office={office} />
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-        <div className="mt-12">
-          <MapSection />
-        </div>
-      </Section>
+      {/* Offices & Locations — Premium Enterprise Office Locator */}
+      <AboutOfficesSection />
 
       {/* FAQ Accordion */}
       <Section aria-labelledby="contact-faq-heading">
@@ -143,21 +122,7 @@ export default function ContactPage() {
         </div>
       </Section>
 
-      {/* Newsletter Section */}
-      <Section aria-labelledby="newsletter-heading" muted>
-        <div className="mx-auto max-w-2xl text-center">
-          <FadeUp>
-            <SectionHeading
-              id="newsletter-heading"
-              eyebrow="Newsletter"
-              title="Stay informed"
-              description="Practical insights on advisory, tax, compliance, systems, and growth."
-              align="center"
-            />
-            <NewsletterForm compact className="mx-auto max-w-xl text-left" />
-          </FadeUp>
-        </div>
-      </Section>
+
 
       {/* CTA Section */}
       <CTASection
