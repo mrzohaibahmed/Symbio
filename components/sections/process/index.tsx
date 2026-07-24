@@ -5,7 +5,6 @@ import {
   StaggerItem,
 } from "@/components/animations";
 import { processSteps } from "@/data";
-import { cn } from "@/utils";
 import { processSectionContent } from "./constants";
 import type { ProcessSectionProps } from "./types";
 

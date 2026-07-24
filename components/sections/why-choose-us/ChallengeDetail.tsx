@@ -22,7 +22,7 @@ export function ChallengeDetail({ challenge }: ChallengeDetailProps) {
         className="space-y-8 lg:space-y-10"
       >
         {/* Dynamic Abstract Enterprise Visual */}
-        <ChallengeVisual type={challenge.visualType} title={challenge.title} />
+        <ChallengeVisual type={challenge.visualType} />
 
         {/* Content Section */}
         <div className="space-y-8">
@@ -47,7 +47,7 @@ export function ChallengeDetail({ challenge }: ChallengeDetailProps) {
               BUSINESS IMPACT
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {challenge.impacts.map((impact, idx) => (
+              {challenge.impacts.map((impact) => (
                 <div
                   key={impact}
                   className="bg-white/[0.03] border border-white/10 rounded-xl p-3.5 flex items-center gap-3 transition-colors hover:border-accent/40"

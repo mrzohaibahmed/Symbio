@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/layout";
 import {
   FadeUp,
-  StaggerContainer,
-  StaggerItem,
 } from "@/components/animations";
 import { CTASection, FAQAccordion } from "@/components/sections/shared";
 import { AboutOfficesSection } from "@/components/sections/about";
@@ -13,7 +11,6 @@ import {
 
 import {
   contactFaqs,
-  offices,
 } from "@/data";
 import { companyInfo } from "@/constants";
 import { siteConfig } from "@/lib/seo";

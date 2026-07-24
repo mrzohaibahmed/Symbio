@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import type { Service } from "@/types";
 import { serviceIconMap } from "@/lib/icons";
-import { HoverCard } from "@/components/animations";
 import { cn } from "@/utils";
 
 export interface ServiceCardProps {

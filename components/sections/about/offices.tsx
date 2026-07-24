@@ -54,7 +54,7 @@ export function AboutOfficesSection({ className }: AboutOfficesSectionProps = {}
     <Section
       id="our-offices"
       aria-labelledby="about-offices-heading"
-      className="relative overflow-hidden py-16 md:py-24 lg:py-32 bg-background"
+      className={cn("relative overflow-hidden py-16 md:py-24 lg:py-32 bg-background", className)}
     >
       {/* Subtle Background Radial Glow & Blueprint Texture */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">

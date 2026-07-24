@@ -5,10 +5,9 @@ import type { VisualType } from "./types";
 
 interface ChallengeVisualProps {
   type: VisualType;
-  title: string;
 }
 
-export function ChallengeVisual({ type, title }: ChallengeVisualProps) {
+export function ChallengeVisual({ type }: ChallengeVisualProps) {
   return (
     <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[440px] rounded-[22px] overflow-hidden bg-gradient-to-b from-[#0F2847]/80 via-[#0B1F3A] to-[#071527] border border-white/10 shadow-2xl flex items-center justify-center group">
       {/* Soft Ambient Radial Backdrop */}
