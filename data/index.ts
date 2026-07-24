@@ -9,8 +9,10 @@ export {
 } from "./home";
 export { faqs, getFaqsByIds } from "./faq";
 export { teamMembers } from "./team";
+export { teamSectionContent, departmentLabels, departmentOrder, teamEnrichments } from "./team-enrichments";
+export type { TeamMemberEnrichment } from "./team-enrichments";
 export { aboutStatistics, companyStatistics } from "./statistics";
-export { certifications } from "./certifications";
+export { certifications, certificationsSectionContent } from "./certifications";
 export { offices } from "./offices";
 export {
   aboutHero,
@@ -42,3 +44,9 @@ export {
   availabilityOptions,
   preferredTimeOptions,
 } from "./contact";
+export {
+  portfolioContent,
+  portfolioEngagements,
+  portfolioIndustries,
+  sectorIndustriesData,
+} from "./portfolio";

@@ -9,52 +9,40 @@ import type {
 
 export const trustedCompanies: TrustedCompany[] = [
   {
-    id: "northline",
-    name: "Northline Group",
+    id: "360-law",
+    name: "360 Law Solicitors (LLP)",
     logo: "/logos/clients/northline.svg",
-    logoAlt: "Northline Group logo",
+    logoAlt: "360 Law Solicitors logo",
   },
   {
-    id: "vertex-labs",
-    name: "Vertex Labs",
+    id: "amr-co",
+    name: "AMR & Co.",
     logo: "/logos/clients/vertex-labs.svg",
-    logoAlt: "Vertex Labs logo",
+    logoAlt: "AMR & Co. logo",
   },
   {
-    id: "harbor-retail",
-    name: "Harbor Retail",
+    id: "kodnod",
+    name: "KodNod",
     logo: "/logos/clients/harbor-retail.svg",
-    logoAlt: "Harbor Retail logo",
+    logoAlt: "KodNod logo",
   },
   {
-    id: "summit-health",
-    name: "Summit Health",
+    id: "awais-ca",
+    name: "Awais A. M. & Co.",
     logo: "/logos/clients/summit-health.svg",
-    logoAlt: "Summit Health logo",
+    logoAlt: "Awais A. M. & Co. logo",
   },
   {
-    id: "crestline",
-    name: "Crestline Mfg",
+    id: "huram-akhtar",
+    name: "Huram I. Akhtar & Co.",
     logo: "/logos/clients/crestline.svg",
-    logoAlt: "Crestline Manufacturing logo",
+    logoAlt: "Huram I. Akhtar & Co. logo",
   },
   {
-    id: "aurora-edu",
-    name: "Aurora Education",
+    id: "tech-blaze",
+    name: "Tech Blaze",
     logo: "/logos/clients/aurora-edu.svg",
-    logoAlt: "Aurora Education logo",
-  },
-  {
-    id: "pinnacle-re",
-    name: "Pinnacle Realty",
-    logo: "/logos/clients/pinnacle-re.svg",
-    logoAlt: "Pinnacle Realty logo",
-  },
-  {
-    id: "civic-path",
-    name: "Civic Path NGO",
-    logo: "/logos/clients/civic-path.svg",
-    logoAlt: "Civic Path NGO logo",
+    logoAlt: "Tech Blaze logo",
   },
 ];
 
@@ -228,10 +216,10 @@ export const processSteps: ProcessStep[] = [
 ];
 
 export const homeStats: StatItem[] = [
-  { id: "businesses", value: 500, suffix: "+", label: "Businesses Served" },
+  { id: "portfolio-engagements", value: 6, suffix: "+", label: "Portfolio Engagements" },
+  { id: "industry-sectors", value: 15, suffix: "+", label: "Industry Sectors" },
   { id: "experience", value: 15, suffix: "+", label: "Years Experience" },
   { id: "satisfaction", value: 98, suffix: "%", label: "Client Satisfaction" },
-  { id: "support", value: 24, suffix: "/7", label: "Support" },
 ];
 
 export const testimonials: TestimonialItem[] = [

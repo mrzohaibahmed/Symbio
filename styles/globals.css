@@ -352,6 +352,18 @@
     padding-block: clamp(2.5rem, 4vw, 4rem);
   }
 
+  /* Editorial design system helpers */
+  .editorial-divider {
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 40%, transparent);
+  }
+
+  .editorial-number {
+    font-family: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
   /* Glass surfaces */
   .glass-surface {
     background-color: color-mix(in srgb, var(--background) 80%, transparent);

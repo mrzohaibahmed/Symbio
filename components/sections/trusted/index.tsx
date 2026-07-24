@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Section, SectionHeading } from "@/components/layout";
 import { FadeUp, FadeIn, CounterAnimation } from "@/components/animations";
 import { trustedCompanies, homeStats } from "@/data";
@@ -6,25 +5,12 @@ import { cn } from "@/utils";
 import { trustedSectionContent } from "./constants";
 import type { TrustedSectionProps } from "./types";
 
-function LogoMark({
-  name,
-  logo,
-  logoAlt,
-}: {
-  name: string;
-  logo: string;
-  logoAlt?: string;
-}) {
+function LogoMark({ name }: { name: string }) {
   return (
-    <div className="flex min-w-[11rem] items-center justify-center rounded-xl border border-border/60 bg-white px-6 py-4 transition-all duration-300 hover:border-accent/20 hover:shadow-md">
-      <Image
-        src={logo}
-        alt={logoAlt || `${name} logo`}
-        width={160}
-        height={40}
-        unoptimized={logo.endsWith(".svg")}
-        className="h-8 w-auto max-w-[9rem] object-contain opacity-50 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
-      />
+    <div className="flex min-w-[14rem] items-center justify-center rounded-xl border border-border/40 bg-card/60 px-6 py-4 backdrop-blur-sm transition-all duration-300 hover:border-accent/30 hover:shadow-md">
+      <span className="heading-font text-sm font-bold text-foreground text-center">
+        {name}
+      </span>
     </div>
   );
 }
@@ -33,7 +19,7 @@ function LogoMark({
  * Trust section — logo marquee + statistics row.
  */
 export function TrustedSection({ className }: TrustedSectionProps) {
-  const logos = [...trustedCompanies, ...trustedCompanies];
+  const logos = [...trustedCompanies, ...trustedCompanies, ...trustedCompanies];
 
   return (
     <Section
@@ -67,8 +53,6 @@ export function TrustedSection({ className }: TrustedSectionProps) {
             <LogoMark
               key={`${company.id}-${index}`}
               name={company.name}
-              logo={company.logo}
-              logoAlt={company.logoAlt}
             />
           ))}
         </div>

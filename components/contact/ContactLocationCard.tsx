@@ -27,14 +27,9 @@ export function ContactLocationCard({
     .join(", ");
 
   return (
-    <article
-      className={cn(
-        "flex h-full flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm",
-        className,
-      )}
-    >
+    <article className={cn("border-b border-border/40 pb-8 pt-4", className)}>
       {office.image ? (
-        <div className="relative aspect-[16/10]">
+        <div className="relative aspect-[16/10] overflow-hidden rounded-xl mb-4">
           <Image
             src={office.image}
             alt={office.imageAlt || office.name}
@@ -46,33 +41,39 @@ export function ContactLocationCard({
         </div>
       ) : null}
 
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        <h3 className="heading-font text-xl font-semibold text-foreground">
-          {office.name}
-        </h3>
-        <p className="flex items-start gap-2 text-sm text-muted-foreground">
-          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+      <div className="flex flex-1 flex-col gap-3">
+        <div className="flex items-center gap-3">
+          <span className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent">
+            <MapPin className="h-4.5 w-4.5" aria-hidden="true" />
+          </span>
+          <h3 className="heading-font text-xl font-bold text-foreground">
+            {office.name}
+          </h3>
+        </div>
+
+        <p className="flex items-start gap-2 text-base text-muted-foreground">
+          <MapPin className="mt-1 h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
           <span>{address}</span>
         </p>
-        <p className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Phone className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-          <a href={`tel:${office.phone}`} className="hover:text-primary">
+        <p className="flex items-center gap-2 text-base text-muted-foreground">
+          <Phone className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+          <a href={`tel:${office.phone}`} className="hover:text-accent font-medium">
             {office.phoneDisplay}
           </a>
         </p>
-        <p className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Mail className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
-          <a href={`mailto:${office.email}`} className="hover:text-primary">
+        <p className="flex items-center gap-2 text-base text-muted-foreground">
+          <Mail className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
+          <a href={`mailto:${office.email}`} className="hover:text-accent font-medium">
             {office.email}
           </a>
         </p>
-        <p className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Clock className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+        <p className="flex items-center gap-2 text-base text-muted-foreground">
+          <Clock className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
           <span>{office.workingHours}</span>
         </p>
 
         {office.directionsUrl ? (
-          <div className="mt-auto pt-2">
+          <div className="pt-2">
             <OutlineButton asChild className="w-full sm:w-auto">
               <a
                 href={office.directionsUrl}

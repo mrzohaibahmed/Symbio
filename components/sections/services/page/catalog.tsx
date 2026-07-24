@@ -97,11 +97,11 @@ export function ServicesCatalogSection() {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-border bg-card p-8 text-center text-sm text-muted-foreground">
+        <p className="border-y border-dashed border-border py-12 text-center text-base text-muted-foreground">
           No services match your search. Try another keyword or category.
         </p>
       ) : (
-        <StaggerContainer className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <StaggerContainer className="mt-8 space-y-4">
           {filtered.map((service) => (
             <StaggerItem key={service.id}>
               <ServiceCard service={service} />

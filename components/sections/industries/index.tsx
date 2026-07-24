@@ -1,80 +1,140 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Section, SectionHeading } from "@/components/layout";
 import {
-  FadeUp,
-  StaggerContainer,
-  StaggerItem,
-} from "@/components/animations";
-import { homeIndustries } from "@/data";
-import { industryIconMap } from "@/lib/icons";
-import { cn } from "@/utils";
-import { industriesSectionContent } from "./constants";
+  ShoppingBag,
+  Scale,
+  HardHat,
+  Factory,
+  UtensilsCrossed,
+  Shirt,
+  Building2,
+  Sparkles,
+  Leaf,
+  Droplets,
+  HeartHandshake,
+  Scissors,
+  GraduationCap,
+  Wifi,
+  Hospital,
+  CheckCircle2,
+  type LucideIcon,
+} from "lucide-react";
+import { Section, SectionHeading } from "@/components/layout";
+import { FadeUp, StaggerContainer, StaggerItem } from "@/components/animations";
+import {
+  portfolioContent,
+  portfolioEngagements,
+  sectorIndustriesData,
+} from "@/data";
 import type { IndustriesSectionProps } from "./types";
 
-/**
- * Interactive industry cards with image overlay hover effects.
- */
-export function IndustriesSection({ className }: IndustriesSectionProps) {
+const sectorIconMap: Record<string, LucideIcon> = {
+  ShoppingBag,
+  Scale,
+  HardHat,
+  Factory,
+  UtensilsCrossed,
+  Shirt,
+  Building2,
+  Sparkles,
+  Leaf,
+  Droplets,
+  HeartHandshake,
+  Scissors,
+  GraduationCap,
+  Wifi,
+  Hospital,
+};
+
+export function IndustriesSection({
+  className,
+  showEngagements = false,
+}: IndustriesSectionProps) {
   return (
-    <Section aria-labelledby="industries-heading" className={className}>
-      <FadeUp>
-        <SectionHeading
-          id="industries-heading"
-          eyebrow={industriesSectionContent.eyebrow}
-          title={industriesSectionContent.title}
-          description={industriesSectionContent.description}
-          align="center"
-        />
-      </FadeUp>
+    <Section aria-labelledby="sectors-heading" className={className}>
+      {/* Selected Engagements (Only when explicitly enabled) */}
+      {showEngagements ? (
+        <>
+          <FadeUp>
+            <SectionHeading
+              id="portfolio-heading"
+              eyebrow={portfolioContent.eyebrow}
+              title={portfolioContent.title}
+              description={portfolioContent.description}
+              align="left"
+            />
+          </FadeUp>
 
-      <StaggerContainer className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-        {homeIndustries.map((industry) => {
-          const Icon = industryIconMap[industry.icon];
-
-          return (
-            <StaggerItem key={industry.id}>
-              <Link
-                href={industry.href}
-                className={cn(
-                  "group block overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300",
-                  "hover:-translate-y-1 hover:border-accent/25 hover:shadow-xl hover:shadow-primary/8",
-                )}
-              >
-                <article>
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={industry.image}
-                      alt={industry.imageAlt}
-                      fill
-                      loading="lazy"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className="object-cover transition-all duration-500 group-hover:scale-105"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent transition-opacity duration-300 group-hover:from-brand-navy/80"
-                    />
-                  </div>
-                  <div className="p-5">
-                    <div className="mb-2 flex items-center gap-3">
-                      <span className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-white">
-                        <Icon className="h-4.5 w-4.5" aria-hidden="true" />
+          <StaggerContainer className="mt-12 divide-y divide-border/40 border-y border-border/40 mb-24">
+            {portfolioEngagements.map((item) => (
+              <StaggerItem key={item.id}>
+                <article className="group py-8 transition-colors duration-200">
+                  <div className="grid gap-6 md:grid-cols-12 md:items-center">
+                    <div className="md:col-span-5">
+                      <span className="inline-block text-xs font-bold uppercase tracking-wider text-accent mb-1">
+                        {item.category}
                       </span>
-                      <h3 className="heading-font text-lg font-bold text-foreground">
-                        {industry.title}
+                      <h3 className="heading-font text-xl font-bold text-foreground md:text-2xl">
+                        {item.name}
                       </h3>
+                      <p className="mt-1 text-sm font-semibold text-muted-foreground">
+                        {item.title}
+                      </p>
                     </div>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {industry.description}
-                    </p>
+
+                    <div className="md:col-span-4">
+                      <p className="text-base leading-relaxed text-muted-foreground">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <div className="md:col-span-3 md:text-right">
+                      <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-bold text-accent">
+                        <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
+                        <span>Outcome: {item.outcome}</span>
+                      </span>
+                    </div>
                   </div>
                 </article>
-              </Link>
-            </StaggerItem>
-          );
-        })}
-      </StaggerContainer>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </>
+      ) : null}
+
+      {/* Enterprise "Sectors & Industry Experience" Grid */}
+      <div>
+        <FadeUp>
+          <SectionHeading
+            id="sectors-heading"
+            eyebrow={portfolioContent.industriesEyebrow}
+            title={portfolioContent.industriesTitle}
+            description={portfolioContent.industriesDescription}
+            align="left"
+          />
+        </FadeUp>
+
+        <StaggerContainer className="mt-14 grid grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          {sectorIndustriesData.map((item) => {
+            const Icon = sectorIconMap[item.iconName] || Building2;
+
+            return (
+              <StaggerItem key={item.id}>
+                <div className="group relative border-b border-border/40 pb-4 pt-2 transition-all duration-200">
+                  <div className="flex items-center gap-3">
+                    <span className="shrink-0 text-accent transition-transform duration-200 group-hover:scale-110">
+                      <Icon className="h-4.5 w-4.5" aria-hidden="true" />
+                    </span>
+                    <span className="heading-font text-base font-bold text-foreground transition-colors duration-200 group-hover:text-accent">
+                      {item.title}
+                    </span>
+                  </div>
+                  {/* Subtle underline hover animation */}
+                  <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+                </div>
+              </StaggerItem>
+            );
+          })}
+        </StaggerContainer>
+      </div>
     </Section>
   );
 }

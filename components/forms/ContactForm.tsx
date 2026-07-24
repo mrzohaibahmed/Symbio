@@ -73,7 +73,7 @@ export function ContactForm() {
     <>
       <form
         onSubmit={onSubmit}
-        className="space-y-5 rounded-xl border border-border bg-card p-6 shadow-sm md:p-8"
+        className="space-y-5"
         noValidate
       >
         <div className="grid gap-5 md:grid-cols-2">

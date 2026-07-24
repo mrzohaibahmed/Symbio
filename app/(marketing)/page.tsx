@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import {
   HeroSection,
   TrustedSection,
@@ -6,7 +6,6 @@ import {
   WhyChooseUsSection,
   IndustriesSection,
   ProcessSection,
-  StatisticsSection,
   TestimonialsSection,
   CtaSection,
 } from "@/components/sections";
@@ -121,7 +120,6 @@ export default function HomePage() {
       <WhyChooseUsSection />
       <IndustriesSection />
       <ProcessSection />
-      <StatisticsSection />
       <TestimonialsSection />
       <CtaSection />
     </>

@@ -1,41 +1,34 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Section, SectionHeading } from "@/components/layout";
 import {
   FadeUp,
   StaggerContainer,
   StaggerItem,
 } from "@/components/animations";
-import { PageHero, CTASection, FAQAccordion } from "@/components/sections/shared";
+import { CTASection, FAQAccordion } from "@/components/sections/shared";
 import {
-  ContactCard,
+  ContactInteractiveSection,
   ContactLocationCard,
   MapSection,
-  BusinessHours,
-  ContactInfo,
 } from "@/components/contact";
+import { NewsletterForm } from "@/components/forms";
 import {
-  ContactForm,
-  ConsultationForm,
-  NewsletterForm,
-} from "@/components/forms";
-import {
-  contactChannels,
   contactFaqs,
-  contactHero,
   offices,
 } from "@/data";
 import { companyInfo } from "@/constants";
 import { siteConfig } from "@/lib/seo";
 
-const title = "Contact";
+const title = "Contact Us";
 const description =
-  "Contact Symbio Advisory for finance, tax, compliance, systems, and strategic growth support.";
+  "Whether you need accounting, tax advisory, audit, ERP implementation, compliance, or strategic business consulting, Symbio Advisory specialists are ready to help.";
 
 export const metadata: Metadata = {
   title,
   description,
   keywords: [
     "contact Symbio Advisory",
+    "schedule consultation",
     "business advisory contact",
     "tax and compliance contact",
     "finance advisory Pakistan",
@@ -107,44 +100,18 @@ export default function ContactPage() {
   return (
     <>
       <ContactJsonLd />
-      <PageHero
-        eyebrow="Contact"
-        title={contactHero.title}
-        description={contactHero.description}
-        image={contactHero.image}
-        imageAlt={contactHero.imageAlt}
-        breadcrumb={[
-          { label: "Home", href: "/" },
-          { label: "Contact" },
-        ]}
-      />
+      
+      {/* Editorial Hero, 40/60 Split, Stats, Timeline & Tabbed Single Form Container */}
+      <ContactInteractiveSection />
 
-      <Section aria-labelledby="contact-channels-heading">
-        <FadeUp>
-          <SectionHeading
-            id="contact-channels-heading"
-            eyebrow="Get in Touch"
-            title="How to reach us"
-            description="Choose the channel that works best for your business inquiry."
-            align="center"
-          />
-        </FadeUp>
-        <StaggerContainer className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {contactChannels.map((channel) => (
-            <StaggerItem key={channel.id}>
-              <ContactCard channel={channel} />
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-      </Section>
-
+      {/* Offices & Locations */}
       <Section aria-labelledby="offices-heading" muted>
         <FadeUp>
           <SectionHeading
             id="offices-heading"
             eyebrow="Offices"
             title="Visit our locations"
-            description="Connect with Symbio Advisory across Pakistan and the UK."
+            description="Connect with Symbio Advisory across Pakistan and international partner hubs."
             align="center"
           />
         </FadeUp>
@@ -155,28 +122,19 @@ export default function ContactPage() {
             </StaggerItem>
           ))}
         </StaggerContainer>
-        <div className="mt-8">
+        <div className="mt-12">
           <MapSection />
         </div>
       </Section>
 
-      <Section aria-labelledby="hours-info-heading">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <FadeUp>
-            <BusinessHours />
-          </FadeUp>
-          <FadeUp delay={0.08}>
-            <ContactInfo />
-          </FadeUp>
-        </div>
-      </Section>
-
-      <Section aria-labelledby="contact-faq-heading" muted>
+      {/* FAQ Accordion */}
+      <Section aria-labelledby="contact-faq-heading">
         <FadeUp>
           <SectionHeading
             id="contact-faq-heading"
             eyebrow="FAQ"
-            title="Common questions"
+            title="Frequently Asked Questions"
+            description="Clear answers about how we structure consultations, advisory engagements, and onboarding."
             align="center"
           />
         </FadeUp>
@@ -185,30 +143,7 @@ export default function ContactPage() {
         </div>
       </Section>
 
-      <Section aria-labelledby="contact-form-heading">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <FadeUp>
-            <SectionHeading
-              id="contact-form-heading"
-              eyebrow="Contact Form"
-              title="Send us a message"
-              description="Share a few details and we’ll route your inquiry to the right specialist."
-              className="mb-6"
-            />
-            <ContactForm />
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <SectionHeading
-              eyebrow="Consultation"
-              title="Book a consultation"
-              description="Prefer a structured conversation? Request a time that works for your team."
-              className="mb-6"
-            />
-            <ConsultationForm />
-          </FadeUp>
-        </div>
-      </Section>
-
+      {/* Newsletter Section */}
       <Section aria-labelledby="newsletter-heading" muted>
         <div className="mx-auto max-w-2xl text-center">
           <FadeUp>
@@ -224,6 +159,7 @@ export default function ContactPage() {
         </div>
       </Section>
 
+      {/* CTA Section */}
       <CTASection
         title="Your Strategic Business Advisory Partner"
         description="Whether you need advice, compliance support, or systems guidance, Symbio Advisory is here to help."

@@ -26,32 +26,27 @@ export function WhyChooseUsSection({ className }: WhyChooseUsSectionProps) {
           eyebrow={whyChooseUsContent.eyebrow}
           title={whyChooseUsContent.title}
           description={whyChooseUsContent.description}
-          align="center"
+          align="left"
           light
         />
       </FadeUp>
 
-      <StaggerContainer className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      <StaggerContainer className="mt-12 grid gap-y-10 gap-x-12 sm:grid-cols-2 lg:grid-cols-3">
         {whyChooseUsFeatures.map((feature) => {
           const Icon = featureIconMap[feature.icon];
 
           return (
             <StaggerItem key={feature.id}>
-              <article
-                className={cn(
-                  "h-full rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm transition-all duration-300",
-                  "hover:-translate-y-1 hover:border-accent/30 hover:bg-white/8",
-                )}
-              >
+              <article className="border-b border-white/10 pb-8">
                 <div className="mb-4 flex items-center gap-3.5">
-                  <span className="shrink-0 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/15 text-accent-light">
+                  <span className="shrink-0 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent/20 text-accent-light">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
-                  <h3 className="heading-font text-lg font-bold text-white">
+                  <h3 className="heading-font text-xl font-bold text-white">
                     {feature.title}
                   </h3>
                 </div>
-                <p className="text-sm leading-relaxed text-white/60">
+                <p className="text-base leading-relaxed text-white/70">
                   {feature.description}
                 </p>
               </article>

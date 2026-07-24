@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { Section, SectionHeading } from "@/components/layout";
+import { IndustriesSection } from "@/components/sections";
 import { CTASection } from "@/components/sections/shared";
 import {
   FadeUp,
   StaggerContainer,
   StaggerItem,
 } from "@/components/animations";
-import { homeIndustries } from "@/data";
-import { industryIconMap } from "@/lib/icons";
+import { Section, SectionHeading } from "@/components/layout";
 import { companyInfo } from "@/constants";
 import { siteConfig } from "@/lib/seo";
 
-const title = "Industries";
+const title = "Portfolio & Industries";
 const description =
-  "Symbio Advisory serves businesses across healthcare, retail, manufacturing, education, construction, real estate, restaurants, NGOs, and technology.";
+  "Explore Symbio Advisory selected portfolio engagements across legal, compliance, AI, chartered accountancy, ERP, and technology, alongside our 15 key industry sectors.";
 
 export const metadata: Metadata = {
   title,
   description,
   keywords: [
+    "portfolio engagements",
+    "selected engagements",
+    "associate firms",
+    "Symbio Advisory portfolio",
     "industry advisory",
-    "sector-specific consulting",
-    "business advisory by industry",
-    "Symbio Advisory industries",
   ],
   alternates: { canonical: "/industries" },
   openGraph: {
@@ -59,7 +56,7 @@ function IndustriesJsonLd() {
           {
             "@type": "ListItem",
             position: 2,
-            name: "Industries",
+            name: "Portfolio & Industries",
             item: `${siteConfig.url}/industries`,
           },
         ],
@@ -83,72 +80,17 @@ export default function IndustriesPage() {
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-grid" />
         <div aria-hidden="true" className="pointer-events-none absolute -right-32 top-1/3 h-72 w-72 rounded-full bg-accent/10 blur-[100px]" />
         <div className="container-shell relative">
-          <p className="eyebrow mb-4 text-accent-light">Industries</p>
+          <p className="eyebrow mb-4 text-accent-light">Portfolio · Selected Engagements</p>
           <h1 className="heading-font max-w-4xl text-balance text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            Industry Expertise That Drives Results
+            Work we are proud to put our name on.
           </h1>
           <p className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-white/60">
-            We bring deep sector knowledge to deliver advisory, compliance, and systems solutions tailored to the unique challenges of your industry.
+            Our portfolio highlights associate firms, technology partners and advisory clients across accounting, compliance, ERP and legal services.
           </p>
         </div>
       </section>
 
-      <Section aria-labelledby="industries-grid-heading">
-        <FadeUp>
-          <SectionHeading
-            id="industries-grid-heading"
-            eyebrow="Sectors We Serve"
-            title="Tailored solutions for every industry"
-            description="From healthcare to technology, we understand the nuances of each sector and deliver advisory that creates real impact."
-            align="center"
-          />
-        </FadeUp>
-
-        <StaggerContainer className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {homeIndustries.map((industry) => {
-            const Icon = industryIconMap[industry.icon];
-
-            return (
-              <StaggerItem key={industry.id}>
-                <article className="group overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/25 hover:shadow-xl hover:shadow-primary/8">
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={industry.image}
-                      alt={industry.imageAlt}
-                      fill
-                      loading="lazy"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className="object-cover transition-all duration-500 group-hover:scale-105"
-                    />
-                    <div
-                      aria-hidden="true"
-                      className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/20 to-transparent"
-                    />
-                    <span className="absolute bottom-3 left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/95 text-accent shadow-lg transition-all duration-300 group-hover:bg-accent group-hover:text-white">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
-                    </span>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="heading-font text-xl font-bold text-foreground">
-                      {industry.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {industry.description}
-                    </p>
-                    <Link
-                      href={industry.href}
-                      className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-all duration-200 hover:gap-3"
-                    >
-                      Learn More
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </Link>
-                  </div>
-                </article>
-              </StaggerItem>
-            );
-          })}
-        </StaggerContainer>
-      </Section>
+      <IndustriesSection showEngagements />
 
       <Section aria-labelledby="industry-approach-heading" dark>
         <FadeUp>
@@ -157,11 +99,11 @@ export default function IndustriesPage() {
             eyebrow="Our Approach"
             title="How we deliver industry-specific value"
             description="Every engagement begins with understanding your sector's regulatory landscape, competitive dynamics, and operational challenges."
-            align="center"
+            align="left"
             light
           />
         </FadeUp>
-        <StaggerContainer className="grid gap-6 md:grid-cols-3">
+        <StaggerContainer className="mt-12 grid gap-10 md:grid-cols-3">
           {[
             {
               title: "Deep Sector Knowledge",
@@ -175,11 +117,14 @@ export default function IndustriesPage() {
               title: "Scalable Systems",
               desc: "We implement ERP and automation solutions designed for your industry's unique workflows and growth trajectory.",
             },
-          ].map((item) => (
+          ].map((item, index) => (
             <StaggerItem key={item.title}>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-7 backdrop-blur-sm transition-all duration-300 hover:border-accent/25 hover:bg-white/8">
-                <h3 className="heading-font text-lg font-bold text-white">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">{item.desc}</p>
+              <div className="border-t-2 border-white/20 pt-6">
+                <span className="editorial-number block text-4xl font-extrabold text-accent-light">
+                  0{index + 1}
+                </span>
+                <h3 className="heading-font mt-3 text-xl font-bold text-white">{item.title}</h3>
+                <p className="mt-3 text-base leading-relaxed text-white/70">{item.desc}</p>
               </div>
             </StaggerItem>
           ))}

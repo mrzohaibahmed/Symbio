@@ -8,3 +8,4 @@ export { BusinessHours } from "./BusinessHours";
 export type { BusinessHoursProps } from "./BusinessHours";
 export { ContactInfo } from "./ContactInfo";
 export type { ContactInfoProps } from "./ContactInfo";
+export { ContactInteractiveSection } from "./ContactInteractiveSection";

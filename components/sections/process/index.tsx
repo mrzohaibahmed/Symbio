@@ -25,33 +25,30 @@ export function ProcessSection({ className }: ProcessSectionProps) {
           eyebrow={processSectionContent.eyebrow}
           title={processSectionContent.title}
           description={processSectionContent.description}
-          align="center"
+          align="left"
         />
       </FadeUp>
 
-      <StaggerContainer className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-        {processSteps.map((step, index) => (
-          <StaggerItem key={step.id}>
-            <article
-              className={cn(
-                "relative h-full rounded-2xl border border-border bg-card p-7 transition-all duration-300",
-                "hover:-translate-y-1 hover:border-accent/25 hover:shadow-lg",
-              )}
-            >
-              <div className="mb-4 flex items-center gap-3.5">
-                <span className="heading-font shrink-0 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent-dark text-base font-bold text-white shadow-md shadow-accent/20">
-                  {step.step}
+      <StaggerContainer className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        {processSteps.map((step) => {
+          const formattedNumber = String(step.step).padStart(2, "0");
+
+          return (
+            <StaggerItem key={step.id}>
+              <article className="border-t-2 border-accent/40 pt-6">
+                <span className="editorial-number block text-5xl font-extrabold text-accent/80 md:text-6xl">
+                  {formattedNumber}
                 </span>
-                <h3 className="heading-font text-xl font-bold text-foreground">
+                <h3 className="heading-font mt-4 text-xl font-bold text-foreground md:text-2xl">
                   {step.title}
                 </h3>
-              </div>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {step.description}
-              </p>
-            </article>
-          </StaggerItem>
-        ))}
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  {step.description}
+                </p>
+              </article>
+            </StaggerItem>
+          );
+        })}
       </StaggerContainer>
     </Section>
   );

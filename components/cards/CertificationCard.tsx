@@ -11,25 +11,20 @@ export function CertificationCard({
   className,
 }: CertificationCardProps) {
   return (
-    <article
-      className={cn(
-        "flex h-full flex-col rounded-xl border border-border bg-card p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-md",
-        className,
-      )}
-    >
-      <div className="mb-3 flex items-center gap-3.5">
-        <span className="shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-sm font-bold text-primary">
+    <article className={cn("border-b border-border/40 pb-6 pt-2", className)}>
+      <div className="flex items-center gap-3.5 mb-2">
+        <span className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent font-bold text-xs uppercase tracking-wider">
           {certification.badgeLabel}
         </span>
-        <h3 className="heading-font text-lg font-semibold text-foreground">
+        <h3 className="heading-font text-lg font-bold text-foreground">
           {certification.title}
         </h3>
       </div>
-      <p className="text-sm font-medium text-muted-foreground">
+      <p className="text-sm font-semibold text-accent">
         {certification.issuer}
         {certification.year ? ` · ${certification.year}` : null}
       </p>
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+      <p className="mt-2 text-base leading-relaxed text-muted-foreground">
         {certification.description}
       </p>
     </article>

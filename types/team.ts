@@ -6,5 +6,5 @@ export interface TeamMember {
   photo: string;
   photoAlt: string;
   linkedin: string;
-  department: "leadership" | "advisory" | "accounting" | "tax";
+  department: "leadership" | "directors" | "associate-directors" | "management" | "legal";
 }
