@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Section } from "@/components/layout";
 import { FadeUp, ScaleIn } from "@/components/animations";
 import { cn } from "@/utils";
+import { CtaGlow } from "./CtaGlow";
 
 export interface CTASectionProps {
   title: string;
@@ -39,14 +40,7 @@ export function CTASection({
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-grid" />
 
             {/* Glow accents */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent/15 blur-[80px]"
-            />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -bottom-16 -left-16 h-52 w-52 rounded-full bg-blue-500/10 blur-[80px]"
-            />
+            <CtaGlow />
 
             <FadeUp>
               <h2 className="heading-font relative text-balance text-3xl font-extrabold tracking-tight text-white md:text-4xl">

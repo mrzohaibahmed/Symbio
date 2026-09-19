@@ -198,7 +198,7 @@ export function AboutTeamSection() {
                     className={cn(
                       "absolute left-0 top-2 bottom-2 w-[3px] rounded-full transition-all duration-300",
                       isActive
-                        ? "bg-accent opacity-100 shadow-[0_0_10px_rgba(15,157,122,0.4)]"
+                        ? "bg-accent opacity-100 shadow-[0_0_10px_rgba(227,6,19,0.4)]"
                         : "bg-accent/30 opacity-0 group-hover:opacity-100"
                     )}
                     initial={false}
@@ -265,7 +265,7 @@ export function AboutTeamSection() {
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[22px] border border-border/40 shadow-xl group">
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-border/40 shadow-xl group">
                 <Image
                   src={activeMember.photo}
                   alt={activeMember.photoAlt}

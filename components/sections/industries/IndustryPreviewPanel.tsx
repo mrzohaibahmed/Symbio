@@ -36,7 +36,7 @@ export function IndustryPreviewPanel({
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="group/panel overflow-hidden rounded-[22px] border border-border/60 bg-card p-6 shadow-xl transition-all duration-300 md:p-8"
+          className="group/panel overflow-hidden rounded-2xl border border-border/60 bg-card p-6 shadow-xl transition-all duration-300 md:p-8"
         >
           {/* Dynamic Cinematic Imagery */}
           <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden rounded-2xl bg-slate-900 shadow-inner">

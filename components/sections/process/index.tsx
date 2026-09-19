@@ -6,10 +6,11 @@ import {
 } from "@/components/animations";
 import { processSteps } from "@/data";
 import { processSectionContent } from "./constants";
+import { ProcessConnector } from "./ProcessConnector";
 import type { ProcessSectionProps } from "./types";
 
 /**
- * Horizontal stepper with navy-to-emerald gradient connectors.
+ * Horizontal stepper with a sequential staggered reveal of each step.
  */
 export function ProcessSection({ className }: ProcessSectionProps) {
   return (
@@ -28,27 +29,30 @@ export function ProcessSection({ className }: ProcessSectionProps) {
         />
       </FadeUp>
 
-      <StaggerContainer className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-        {processSteps.map((step) => {
-          const formattedNumber = String(step.step).padStart(2, "0");
+      <div className="relative mt-12">
+        <ProcessConnector />
+        <StaggerContainer className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((step) => {
+            const formattedNumber = String(step.step).padStart(2, "0");
 
-          return (
-            <StaggerItem key={step.id}>
-              <article className="border-t-2 border-accent/40 pt-6">
-                <span className="editorial-number block text-5xl font-extrabold text-accent/80 md:text-6xl">
-                  {formattedNumber}
-                </span>
-                <h3 className="heading-font mt-4 text-xl font-bold text-accent md:text-2xl">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-                  {step.description}
-                </p>
-              </article>
-            </StaggerItem>
-          );
-        })}
-      </StaggerContainer>
+            return (
+              <StaggerItem key={step.id}>
+                <article className="border-t-2 border-accent/40 pt-6">
+                  <span className="editorial-number block text-5xl font-extrabold text-accent/80 md:text-6xl">
+                    {formattedNumber}
+                  </span>
+                  <h3 className="heading-font mt-4 text-xl font-bold text-accent md:text-2xl">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                    {step.description}
+                  </p>
+                </article>
+              </StaggerItem>
+            );
+          })}
+        </StaggerContainer>
+      </div>
     </Section>
   );
 }

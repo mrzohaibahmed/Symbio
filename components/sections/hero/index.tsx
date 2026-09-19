@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Container, SectionTransition } from "@/components/layout";
 import {
@@ -9,6 +10,7 @@ import {
   FadeIn,
   MagneticButton,
 } from "@/components/animations";
+import { usePrefersReducedMotion } from "@/components/animations/use-prefers-reduced-motion";
 import { cn } from "@/utils";
 import { heroContent } from "./constants";
 import type { HeroSectionProps } from "./types";
@@ -18,8 +20,20 @@ import type { HeroSectionProps } from "./types";
  * editorial typography, and dual CTAs.
  */
 export function HeroSection({ className }: HeroSectionProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduceMotion = usePrefersReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  // Restrained parallax: background drifts slower than the page scrolls.
+  const orbY1 = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 60]);
+  const orbY2 = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -40]);
+  const patternY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : 24]);
+
   return (
     <section
+      ref={sectionRef}
       aria-labelledby="home-hero-heading"
       className={cn(
         "relative flex min-h-[100vh] items-center overflow-hidden gradient-navy-deep",
@@ -27,19 +41,25 @@ export function HeroSection({ className }: HeroSectionProps) {
       )}
     >
       {/* Geometric grid pattern */}
-      <div
+      <motion.div
         aria-hidden="true"
+        style={{ y: patternY }}
         className="pointer-events-none absolute inset-0 pattern-grid"
       />
 
       {/* Animated gradient orbs */}
       <motion.div
         aria-hidden="true"
+        style={{ y: orbY1 }}
         className="pointer-events-none absolute -right-40 top-1/4 h-[500px] w-[500px] rounded-full bg-accent/8 blur-[120px]"
-        animate={{
-          scale: [1, 1.15, 1],
-          opacity: [0.4, 0.6, 0.4],
-        }}
+        animate={
+          reduceMotion
+            ? undefined
+            : {
+              scale: [1, 1.15, 1],
+              opacity: [0.4, 0.6, 0.4],
+            }
+        }
         transition={{
           duration: 8,
           repeat: Infinity,
@@ -48,11 +68,16 @@ export function HeroSection({ className }: HeroSectionProps) {
       />
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-32 bottom-1/4 h-[400px] w-[400px] rounded-full bg-blue-500/5 blur-[100px]"
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
+        style={{ y: orbY2 }}
+        className="pointer-events-none absolute -left-32 bottom-1/4 h-[400px] w-[400px] rounded-full bg-gold/5 blur-[100px]"
+        animate={
+          reduceMotion
+            ? undefined
+            : {
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }
+        }
         transition={{
           duration: 10,
           repeat: Infinity,

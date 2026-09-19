@@ -33,7 +33,7 @@ export function ChallengeNav({ challenges, activeId, onSelect }: ChallengeNavPro
               className={cn(
                 "absolute left-0 top-0 bottom-0 w-[3px] rounded-full transition-all duration-300",
                 isActive
-                  ? "bg-accent-light opacity-100 shadow-[0_0_12px_rgba(18,196,149,0.6)]"
+                  ? "bg-accent-light opacity-100 shadow-[0_0_12px_rgba(237,28,36,0.6)]"
                   : "bg-white/20 opacity-0 group-hover:opacity-100"
               )}
               initial={false}

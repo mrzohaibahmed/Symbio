@@ -9,7 +9,7 @@ interface ChallengeVisualProps {
 
 export function ChallengeVisual({ type }: ChallengeVisualProps) {
   return (
-    <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[440px] rounded-[22px] overflow-hidden bg-gradient-to-b from-[#1A1A1A]/80 via-[#111111] to-[#000000] border border-white/10 shadow-2xl flex items-center justify-center group">
+    <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[440px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#1A1A1A]/80 via-[#111111] to-[#000000] border border-white/10 shadow-2xl flex items-center justify-center group">
       {/* Soft Ambient Radial Backdrop */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-accent/15 blur-3xl" />
@@ -75,14 +75,14 @@ function ArchitecturalGridVisual() {
       />
       <motion.rect
         x="100" y="70" width="200" height="180" rx="8"
-        stroke="rgba(225,29,46,0.3)" strokeWidth="1.5"
+        stroke="rgba(227,6,19,0.3)" strokeWidth="1.5"
       />
 
       {/* Perspective Architectural Lines */}
-      <line x1="60" y1="40" x2="100" y2="70" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" />
-      <line x1="340" y1="40" x2="300" y2="70" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" />
-      <line x1="60" y1="280" x2="100" y2="250" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" />
-      <line x1="340" y1="280" x2="300" y2="250" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" />
+      <line x1="60" y1="40" x2="100" y2="70" stroke="rgba(237,28,36,0.4)" strokeWidth="1.5" />
+      <line x1="340" y1="40" x2="300" y2="70" stroke="rgba(237,28,36,0.4)" strokeWidth="1.5" />
+      <line x1="60" y1="280" x2="100" y2="250" stroke="rgba(237,28,36,0.4)" strokeWidth="1.5" />
+      <line x1="340" y1="280" x2="300" y2="250" stroke="rgba(237,28,36,0.4)" strokeWidth="1.5" />
 
       {/* Crosshairs & Center Node */}
       <line x1="200" y1="40" x2="200" y2="280" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
@@ -94,7 +94,7 @@ function ArchitecturalGridVisual() {
         animate={{ scale: [1, 1.25, 1] }}
         transition={{ duration: 2.5, repeat: Infinity }}
       />
-      <circle cx="200" cy="160" r="16" stroke="rgba(255,71,87,0.5)" strokeWidth="1" />
+      <circle cx="200" cy="160" r="16" stroke="rgba(237,28,36,0.5)" strokeWidth="1" />
 
       <circle cx="100" cy="70" r="4" fill="#ED1C24" />
       <circle cx="300" cy="70" r="4" fill="#ED1C24" />
@@ -124,7 +124,7 @@ function WorkflowNetworkVisual() {
     <svg className="w-full h-full max-w-[360px] max-h-[300px]" viewBox="0 0 400 320" fill="none">
       {/* Connecting Network Paths */}
       <path d="M 60 160 Q 140 60 200 160 T 340 160" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" fill="none" />
-      <path d="M 60 160 Q 140 260 200 160 T 340 160" stroke="rgba(225,29,46,0.3)" strokeWidth="1.5" fill="none" />
+      <path d="M 60 160 Q 140 260 200 160 T 340 160" stroke="rgba(227,6,19,0.3)" strokeWidth="1.5" fill="none" />
 
       {/* Animated Data Pulses */}
       <motion.circle
@@ -139,7 +139,7 @@ function WorkflowNetworkVisual() {
       />
 
       {/* Central Hub & Satellite Nodes */}
-      <circle cx="200" cy="160" r="28" fill="rgba(225,29,46,0.15)" stroke="#E30613" strokeWidth="1.5" />
+      <circle cx="200" cy="160" r="28" fill="rgba(227,6,19,0.15)" stroke="#E30613" strokeWidth="1.5" />
       <circle cx="200" cy="160" r="12" fill="#ED1C24" />
 
       <circle cx="70" cy="160" r="10" fill="rgba(30,41,59,0.8)" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" />
@@ -153,7 +153,7 @@ function WorkflowNetworkVisual() {
 
       {/* Orbit Ring */}
       <motion.circle
-        cx="200" cy="160" r="60" stroke="rgba(255,71,87,0.25)" strokeWidth="1" strokeDasharray="6 6" fill="none"
+        cx="200" cy="160" r="60" stroke="rgba(237,28,36,0.25)" strokeWidth="1" strokeDasharray="6 6" fill="none"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         style={{ transformOrigin: "200px 160px" }}
@@ -172,13 +172,13 @@ function SecurityMeshVisual() {
       />
       <polygon
         points="200,60 290,105 290,215 200,260 110,215 110,105"
-        stroke="rgba(225,29,46,0.3)" strokeWidth="1.5" fill="rgba(225,29,46,0.05)"
+        stroke="rgba(227,6,19,0.3)" strokeWidth="1.5" fill="rgba(227,6,19,0.05)"
       />
 
       {/* Internal Security Control Node */}
       <motion.polygon
         points="200,90 260,120 260,200 200,230 140,200 140,120"
-        stroke="#ED1C24" strokeWidth="2" fill="rgba(255,71,87,0.15)"
+        stroke="#ED1C24" strokeWidth="2" fill="rgba(237,28,36,0.15)"
         animate={{ scale: [0.97, 1.03, 0.97] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         style={{ transformOrigin: "200px 160px" }}
@@ -192,7 +192,7 @@ function SecurityMeshVisual() {
       {/* Control Scan Beam */}
       <motion.line
         x1="110" y1="160" x2="290" y2="160"
-        stroke="rgba(255,71,87,0.7)" strokeWidth="2"
+        stroke="rgba(237,28,36,0.7)" strokeWidth="2"
         animate={{ y1: [80, 240, 80], y2: [80, 240, 80] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -215,7 +215,7 @@ function RegulatoryLinesVisual() {
           <g key={i}>
             <rect
               x={x} y={y} width="16" height={h} rx="4"
-              fill={isAccent ? "rgba(255,71,87,0.35)" : "rgba(255,255,255,0.08)"}
+              fill={isAccent ? "rgba(237,28,36,0.35)" : "rgba(255,255,255,0.08)"}
               stroke={isAccent ? "#ED1C24" : "rgba(255,255,255,0.15)"}
               strokeWidth="1"
             />
@@ -269,7 +269,7 @@ function StrategicRoadmapVisual() {
           <circle cx={node.cx} cy={node.cy} r="4" fill="#ED1C24" />
           {index === 3 && (
             <motion.circle
-              cx={node.cx} cy={node.cy} r="18" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" fill="none"
+              cx={node.cx} cy={node.cy} r="18" stroke="rgba(237,28,36,0.4)" strokeWidth="1.5" fill="none"
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
@@ -292,7 +292,7 @@ function FinancialMatrixVisual() {
   return (
     <svg className="w-full h-full max-w-[360px] max-h-[300px]" viewBox="0 0 400 320" fill="none">
       {/* Financial Matrix Ledger Cards */}
-      <rect x="60" y="50" width="280" height="220" rx="10" fill="rgba(15,31,58,0.7)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
+      <rect x="60" y="50" width="280" height="220" rx="10" fill="rgba(17,17,17,0.7)" stroke="rgba(255,255,255,0.12)" strokeWidth="1" />
 
       {/* Ledger Header Line */}
       <line x1="60" y1="95" x2="340" y2="95" stroke="rgba(255,255,255,0.15)" strokeWidth="1" />
@@ -304,7 +304,7 @@ function FinancialMatrixVisual() {
           <line x1="200" y1={y} x2="260" y2={y} stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeLinecap="round" />
           <rect
             x="280" y={y - 6} width="40" height="12" rx="3"
-            fill={idx === 1 ? "rgba(255,71,87,0.25)" : "rgba(255,255,255,0.06)"}
+            fill={idx === 1 ? "rgba(237,28,36,0.25)" : "rgba(255,255,255,0.06)"}
             stroke={idx === 1 ? "#ED1C24" : "none"}
           />
         </g>

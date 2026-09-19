@@ -101,7 +101,7 @@ export function AboutCertificationsSection() {
                   className={cn(
                     "absolute left-0 top-2.5 bottom-2.5 w-[3px] rounded-full transition-all duration-300",
                     isActive
-                      ? "bg-accent opacity-100 shadow-[0_0_10px_rgba(15,157,122,0.4)]"
+                      ? "bg-accent opacity-100 shadow-[0_0_10px_rgba(227,6,19,0.4)]"
                       : "bg-accent/30 opacity-0 group-hover:opacity-100"
                   )}
                   initial={false}

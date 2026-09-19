@@ -35,7 +35,7 @@ export function SocialIconLink({ link, className, variant = "default" }: SocialI
       rel="noopener noreferrer"
       aria-label={link.label}
       className={cn(
-        "inline-flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-200",
+        "inline-flex h-10 w-10 items-center justify-center rounded-xl transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95",
         variant === "light"
           ? "border border-white/15 text-white/50 hover:border-accent-light hover:bg-white/5 hover:text-accent-light"
           : "border border-border bg-card text-muted-foreground hover:border-accent hover:bg-accent/5 hover:text-accent",

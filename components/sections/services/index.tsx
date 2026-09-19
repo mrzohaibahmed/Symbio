@@ -4,7 +4,19 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Sparkles,
+  Calculator,
+  Receipt,
+  LineChart,
+  Briefcase,
+  Building2,
+  Database,
+  Store,
+  type LucideIcon,
+} from "lucide-react";
 import { Section, SectionHeading } from "@/components/layout";
 import { FadeUp } from "@/components/animations";
 import { Button } from "@/components/ui/button";
@@ -23,6 +35,8 @@ export interface InteractiveServiceItem {
   benefits: string[];
   image: string;
   imageAlt: string;
+  /** Matches the icon used for this service in the main catalog (lib/icons.ts). */
+  icon: LucideIcon;
 }
 
 const interactiveServices: InteractiveServiceItem[] = [
@@ -45,6 +59,7 @@ const interactiveServices: InteractiveServiceItem[] = [
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Financial ledgers and bookkeeping reports on desk",
+    icon: Calculator,
   },
   {
     id: "tax-advisory-compliance",
@@ -65,12 +80,13 @@ const interactiveServices: InteractiveServiceItem[] = [
     image:
       "https://images.unsplash.com/photo-1554224311-beee4ece0eb3?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Corporate meeting discussing tax compliance documents",
+    icon: Receipt,
   },
   {
     id: "audit-assurance",
     number: "03",
     title: "Audit & Assurance Services",
-    slug: "audit-assurance",
+    slug: "audit-assurance-services",
     shortDescription:
       "Independent financial audits, internal control reviews, and risk assurance for boards, investors, and stakeholders.",
     description:
@@ -85,6 +101,7 @@ const interactiveServices: InteractiveServiceItem[] = [
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Business analytics and audit review dashboard",
+    icon: LineChart,
   },
   {
     id: "business-financial-advisory",
@@ -105,6 +122,7 @@ const interactiveServices: InteractiveServiceItem[] = [
     image:
       "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Executive discussion and strategic corporate planning",
+    icon: Briefcase,
   },
   {
     id: "corporate-advisory-compliance",
@@ -125,6 +143,7 @@ const interactiveServices: InteractiveServiceItem[] = [
     image:
       "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Corporate strategy meeting and legal agreements",
+    icon: Building2,
   },
   {
     id: "erp-implementation-automation",
@@ -145,6 +164,7 @@ const interactiveServices: InteractiveServiceItem[] = [
     image:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Digital transformation and ERP technology dashboard",
+    icon: Database,
   },
   {
     id: "additional-solutions",
@@ -165,6 +185,7 @@ const interactiveServices: InteractiveServiceItem[] = [
     image:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80",
     imageAlt: "Cross-functional consulting team collaborating",
+    icon: Store,
   },
 ];
 
@@ -231,7 +252,7 @@ export function ServicesSection({ className }: ServicesSectionProps) {
                   className={cn(
                     "absolute left-0 top-2.5 bottom-2.5 w-[3px] rounded-full transition-all duration-300",
                     isActive
-                      ? "bg-accent opacity-100 shadow-[0_0_10px_rgba(15,157,122,0.4)]"
+                      ? "bg-accent opacity-100 shadow-[0_0_10px_rgba(227,6,19,0.4)]"
                       : "bg-accent/30 opacity-0 group-hover:opacity-100"
                   )}
                   initial={false}
@@ -305,9 +326,19 @@ export function ServicesSection({ className }: ServicesSectionProps) {
                   </span>
                 </div>
 
-                <h3 className="heading-font text-2xl font-extrabold text-accent md:text-3xl lg:text-4xl">
-                  {activeService.title}
-                </h3>
+                <div className="flex items-center gap-3">
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                    className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent"
+                  >
+                    <activeService.icon className="h-5 w-5" aria-hidden="true" />
+                  </motion.span>
+                  <h3 className="heading-font text-2xl font-extrabold text-accent md:text-3xl lg:text-4xl">
+                    {activeService.title}
+                  </h3>
+                </div>
 
                 <p className="text-lg font-semibold text-accent leading-snug">
                   {activeService.shortDescription}
@@ -349,7 +380,7 @@ export function ServicesSection({ className }: ServicesSectionProps) {
 
               {/* Dynamic Image Container */}
               <div className="lg:col-span-5">
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[22px] border border-border/40 shadow-xl group">
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-border/40 shadow-xl group">
                   <Image
                     src={activeService.image}
                     alt={activeService.imageAlt}

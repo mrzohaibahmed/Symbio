@@ -76,8 +76,8 @@ export function Navbar() {
           ? undefined
           : {
             boxShadow: scrolled
-              ? "0 4px 30px -8px rgba(10, 10, 12, 0.12)"
-              : "0 0 0 0 rgba(10, 10, 12, 0)",
+              ? "0 4px 30px -8px rgba(17, 17, 17, 0.12)"
+              : "0 0 0 0 rgba(17, 17, 17, 0)",
           }
       }
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
