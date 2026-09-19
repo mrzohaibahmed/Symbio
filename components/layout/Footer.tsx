@@ -37,7 +37,7 @@ export function Footer() {
   const address = formatAddress(companyInfo.address);
 
   return (
-    <footer className="relative bg-[#0B1F3A] text-white/70">
+    <footer className="relative gradient-navy text-white/70">
       <Container className="pt-16 pb-8">
         {/* Main 4-column Grid */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">

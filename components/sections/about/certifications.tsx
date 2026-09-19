@@ -192,7 +192,7 @@ export function AboutCertificationsSection() {
 
               {/* Title & Year */}
               <div>
-                <h3 className="heading-font text-2xl font-extrabold text-foreground md:text-3xl lg:text-4xl">
+                <h3 className="heading-font text-2xl font-extrabold text-accent md:text-3xl lg:text-4xl">
                   {active.title}
                 </h3>
                 <p className="mt-2 text-lg font-semibold text-accent leading-snug">
@@ -266,7 +266,7 @@ export function AboutCertificationsSection() {
               <span className="text-xs font-bold uppercase tracking-wider text-accent mb-3 block">
                 Governance & Assurance
               </span>
-              <h3 className="heading-font text-2xl font-extrabold text-foreground md:text-3xl lg:text-4xl whitespace-pre-line">
+              <h3 className="heading-font text-2xl font-extrabold text-accent md:text-3xl lg:text-4xl whitespace-pre-line">
                 {certificationsSectionContent.bottomTitle}
               </h3>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg max-w-2xl">

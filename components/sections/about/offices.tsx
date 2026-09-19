@@ -345,7 +345,7 @@ export function AboutOfficesSection({ className }: AboutOfficesSectionProps = {}
               {/* Modal Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-border/60 bg-surface">
                 <div>
-                  <h3 className="heading-font text-lg font-bold text-foreground">
+                  <h3 className="heading-font text-lg font-bold text-accent">
                     {activeOffice.name} Office Map Preview
                   </h3>
                   <p className="text-xs text-muted-foreground">

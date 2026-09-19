@@ -44,7 +44,7 @@ export function IndustriesSection({
                       <span className="inline-block text-xs font-bold uppercase tracking-wider text-accent mb-1">
                         {item.category}
                       </span>
-                      <h3 className="heading-font text-xl font-bold text-foreground md:text-2xl">
+                      <h3 className="heading-font text-xl font-bold text-accent md:text-2xl">
                         {item.name}
                       </h3>
                       <p className="mt-1 text-sm font-semibold text-muted-foreground">

@@ -48,7 +48,7 @@ export function JobCard({ job, className }: JobCardProps) {
         </div>
 
         {/* Job Title */}
-        <h3 className="heading-font mt-4 text-xl font-bold text-foreground leading-snug tracking-tight">
+        <h3 className="heading-font mt-4 text-xl font-bold text-accent leading-snug tracking-tight">
           <Link
             href={job.href}
             className="transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-accent-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"

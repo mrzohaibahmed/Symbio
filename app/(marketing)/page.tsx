@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   HeroSection,
   TrustedSection,
+  StatisticsSection,
   ServicesSection,
   WhyChooseUsSection,
   IndustriesSection,
@@ -116,6 +117,7 @@ export default function HomePage() {
       <HomeJsonLd />
       <HeroSection />
       <TrustedSection />
+      <StatisticsSection />
       <ServicesSection />
       <WhyChooseUsSection />
       <IndustriesSection />

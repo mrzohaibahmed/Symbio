@@ -65,7 +65,7 @@ export function IndustryPreviewPanel({
 
           {/* Large Industry Name & Summary */}
           <div className="mt-7">
-            <h3 className="heading-font text-2xl font-extrabold text-foreground md:text-3xl lg:text-4xl">
+            <h3 className="heading-font text-2xl font-extrabold text-accent md:text-3xl lg:text-4xl">
               {industry.title}
             </h3>
             <p className="mt-3 text-pretty text-base leading-relaxed text-muted-foreground md:text-lg">

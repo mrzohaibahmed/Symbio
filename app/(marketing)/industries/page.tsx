@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { IndustriesSection } from "@/components/sections";
-import { CTASection } from "@/components/sections/shared";
+import { CTASection, PageHero } from "@/components/sections/shared";
 import {
   FadeUp,
   StaggerContainer,
   StaggerItem,
 } from "@/components/animations";
-import { Section, SectionHeading, SectionTransition } from "@/components/layout";
+import { Section, SectionHeading } from "@/components/layout";
 import { companyInfo } from "@/constants";
 import { siteConfig } from "@/lib/seo";
 
@@ -76,20 +76,12 @@ export default function IndustriesPage() {
   return (
     <>
       <IndustriesJsonLd />
-      <section className="relative overflow-hidden gradient-navy-deep pt-[calc(var(--header-height)+2rem)] pb-14 md:pb-20">
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 pattern-grid" />
-        <div aria-hidden="true" className="pointer-events-none absolute -right-32 top-1/3 h-72 w-72 rounded-full bg-accent/10 blur-[100px]" />
-        <div className="container-shell relative">
-          <p className="eyebrow mb-4 text-accent-light">Portfolio · Selected Engagements</p>
-          <h1 className="heading-font max-w-4xl text-balance text-4xl font-extrabold tracking-tight text-white md:text-5xl">
-            Work we are proud to put our name on.
-          </h1>
-          <p className="mt-5 max-w-2xl text-pretty text-lg leading-relaxed text-white/60">
-            Our portfolio highlights associate firms, technology partners and advisory clients across accounting, compliance, ERP and legal services.
-          </p>
-        </div>
-        <SectionTransition />
-      </section>
+      <PageHero
+        eyebrow="Portfolio · Selected Engagements"
+        title="Work we are proud to put our name on."
+        description="Our portfolio highlights associate firms, technology partners and advisory clients across accounting, compliance, ERP and legal services."
+        breadcrumb={[{ label: "Home", href: "/" }, { label: "Portfolio & Industries" }]}
+      />
 
       <IndustriesSection showEngagements />
 

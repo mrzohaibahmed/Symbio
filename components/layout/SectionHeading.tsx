@@ -43,7 +43,7 @@ export function SectionHeading({
       ) : null}
       <Heading
         className={cn(
-          "heading-font text-balance text-3xl font-extrabold tracking-tight text-foreground md:text-4xl lg:text-[2.6rem] lg:leading-[1.12]",
+          "heading-font text-balance text-3xl font-extrabold tracking-tight text-accent md:text-4xl lg:text-[2.6rem] lg:leading-[1.12]",
           light && "!text-white",
         )}
       >

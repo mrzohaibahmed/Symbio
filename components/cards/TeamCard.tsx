@@ -27,10 +27,10 @@ export function TeamCard({ member, className }: TeamCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
             className="object-cover transition duration-500 group-hover:scale-105"
           />
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-brand-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </div>
         <div className="flex flex-1 flex-col p-6">
-          <h3 className="heading-font text-xl font-bold text-foreground">
+          <h3 className="heading-font text-xl font-bold text-accent">
             {member.name}
           </h3>
           <p className="mt-1 text-sm font-semibold text-accent">{member.role}</p>

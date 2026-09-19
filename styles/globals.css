@@ -2,12 +2,13 @@
  * Symbio Advisory — Enterprise Design System
  * Tailwind CSS v4 entry point with premium brand tokens and utilities.
  *
- * Palette:
- *   Primary   → Deep Navy  #0B1F3A
- *   Secondary → Charcoal   #1E293B
- *   Accent    → Emerald    #0F9D7A
- *   Text      → #0F172A / #475569
- *   BG        → #FFFFFF / #F8FAFC
+ * Palette (fintech):
+ *   Primary   → Signal Red   #E30613
+ *   Dark red  → Hover/grad   #B3000F
+ *   Highlight → Gold         #FFC20E
+ *   Text/BG   → #111111 / #1A1A1A (dark)
+ *   BG        → #FFFFFF / #F5F5F5 (light)
+ *   Muted     → #6B6B6B
  */
 
 @import "tailwindcss";
@@ -18,24 +19,27 @@
 
 :root {
   /* Brand */
-  --color-primary: #0B1F3A;
+  --color-primary: #111111;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #1E293B;
+  --color-secondary: #1A1A1A;
   --color-secondary-foreground: #ffffff;
-  --color-accent-brand: #0F9D7A;
-  --color-accent-brand-light: #12C495;
-  --color-accent-brand-dark: #0A7D60;
+  --color-accent-brand: #E30613;
+  --color-accent-brand-light: #ED1C24;
+  --color-accent-brand-dark: #B3000F;
+  --color-gold: #FFC20E;
+  --color-gold-light: #FFD34D;
+  --color-gold-dark: #D9A400;
 
   /* Neutrals */
-  --color-dark: #0F172A;
+  --color-dark: #111111;
   --color-background: #ffffff;
-  --color-surface: #F8FAFC;
+  --color-surface: #F5F5F5;
   --color-white: #ffffff;
-  --color-gray: #475569;
-  --color-gray-light: #94A3B8;
-  --color-muted: #F1F5F9;
-  --color-border: #E2E8F0;
-  --color-border-light: #F1F5F9;
+  --color-gray: #6B6B6B;
+  --color-gray-light: #9E9E9E;
+  --color-muted: #F5F5F5;
+  --color-border: #E0E0E0;
+  --color-border-light: #F0F0F0;
 
   /* Feedback */
   --color-success: #10B981;
@@ -86,39 +90,39 @@
 }
 
 .dark {
-  --color-background: #0B1F3A;
-  --color-surface: #0E2749;
+  --color-background: #111111;
+  --color-surface: #1A1A1A;
   --color-white: #ffffff;
-  --color-dark: #F8FAFC;
-  --color-gray: #94A3B8;
-  --color-gray-light: #CBD5E1;
-  --color-muted: #153258;
-  --color-border: #1E3E6B;
-  --color-border-light: #183358;
+  --color-dark: #F5F5F5;
+  --color-gray: #9E9E9E;
+  --color-gray-light: #C2C2C2;
+  --color-muted: #202020;
+  --color-border: #2A2A2A;
+  --color-border-light: #232323;
   --color-primary-foreground: #ffffff;
   --color-secondary-foreground: #ffffff;
 
-  --background: #0B1F3A;
-  --foreground: #F8FAFC;
-  --card: #102647;
-  --card-foreground: #F8FAFC;
-  --popover: #102647;
-  --popover-foreground: #F8FAFC;
-  --primary: #0F9D7A;
+  --background: #111111;
+  --foreground: #F5F5F5;
+  --card: #1A1A1A;
+  --card-foreground: #F5F5F5;
+  --popover: #1A1A1A;
+  --popover-foreground: #F5F5F5;
+  --primary: #E30613;
   --primary-foreground: #ffffff;
-  --secondary: #1E293B;
+  --secondary: #1A1A1A;
   --secondary-foreground: #ffffff;
-  --muted: #153258;
-  --muted-foreground: #94A3B8;
-  --accent: #0F9D7A;
+  --muted: #202020;
+  --muted-foreground: #9E9E9E;
+  --accent: #E30613;
   --accent-foreground: #ffffff;
-  --accent-light: #12C495;
-  --accent-dark: #0A7D60;
+  --accent-light: #ED1C24;
+  --accent-dark: #B3000F;
   --destructive: var(--color-error);
   --destructive-foreground: #ffffff;
-  --border: #1E3E6B;
-  --input: #1E3E6B;
-  --ring: #0F9D7A;
+  --border: #2A2A2A;
+  --input: #2A2A2A;
+  --ring: #E30613;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -152,10 +156,13 @@
   --color-warning: var(--color-warning);
   --color-info: var(--color-info);
   --color-surface: var(--color-surface);
-  --color-brand-navy: #0B1F3A;
-  --color-brand-charcoal: #1E293B;
-  --color-brand-emerald: #0F9D7A;
-  --color-brand-emerald-light: #12C495;
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-brand-black: #111111;
+  --color-brand-charcoal: #1A1A1A;
+  --color-brand-red: #E30613;
+  --color-brand-red-light: #ED1C24;
 
   --font-heading: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
@@ -210,7 +217,7 @@
     font-weight: 700;
     line-height: 1.12;
     letter-spacing: -0.025em;
-    color: var(--foreground);
+    color: var(--accent);
   }
 
   h1 {
@@ -380,29 +387,29 @@
 
   /* Gradient utilities */
   .gradient-navy {
-    background: linear-gradient(135deg, #0B1F3A 0%, #1E293B 100%);
+    background: linear-gradient(135deg, #111111 0%, #1A1A1A 100%);
   }
 
   .gradient-navy-deep {
-    background: linear-gradient(180deg, #070F1D 0%, #0B1F3A 40%, #162D50 100%);
+    background: linear-gradient(180deg, #000000 0%, #111111 40%, #1A1A1A 100%);
   }
 
   .gradient-accent {
-    background: linear-gradient(135deg, #0F9D7A 0%, #12C495 100%);
+    background: linear-gradient(135deg, #E30613 0%, #ED1C24 100%);
   }
 
   .gradient-accent-hover {
-    background: linear-gradient(135deg, #0A7D60 0%, #0F9D7A 100%);
+    background: linear-gradient(135deg, #B3000F 0%, #E30613 100%);
   }
 
   .gradient-surface {
     background: linear-gradient(180deg, var(--background) 0%, var(--color-surface) 100%);
   }
 
-  /* Navy section */
+  /* Dark section (brand black/charcoal) */
   .section-navy {
-    background: linear-gradient(135deg, #0B1F3A 0%, #1E293B 100%);
-    color: #F1F5F9;
+    background: linear-gradient(135deg, #111111 0%, #1A1A1A 100%);
+    color: #F5F5F5;
   }
 
   .section-navy h1,
@@ -415,7 +422,7 @@
   }
 
   .section-navy p {
-    color: #CBD5E1;
+    color: #C2C2C2;
   }
 
   /* Premium card hover */
@@ -427,8 +434,8 @@
 
   .card-hover:hover {
     transform: translateY(-3px);
-    box-shadow: 0 16px 40px -12px rgba(11, 31, 58, 0.1),
-      0 6px 16px -6px rgba(15, 157, 122, 0.06);
+    box-shadow: 0 16px 40px -12px rgba(17, 17, 17, 0.1),
+      0 6px 16px -6px rgba(227, 6, 19, 0.06);
   }
 
   /* Eyebrow decoration */
@@ -520,11 +527,11 @@
 
     0%,
     100% {
-      box-shadow: 0 0 0 0 rgba(15, 157, 122, 0.3);
+      box-shadow: 0 0 0 0 rgba(227, 6, 19, 0.3);
     }
 
     50% {
-      box-shadow: 0 0 20px 4px rgba(15, 157, 122, 0.15);
+      box-shadow: 0 0 20px 4px rgba(227, 6, 19, 0.15);
     }
   }
 
@@ -535,7 +542,7 @@
   /* Geometric grid pattern with subtle ambient radial depth */
   .pattern-grid {
     background-image:
-      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(15, 157, 122, 0.035), transparent 75%),
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 194, 14, 0.05), transparent 75%),
       linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 100% 100%, 60px 60px, 60px 60px;

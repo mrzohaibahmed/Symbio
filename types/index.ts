@@ -1,4 +1,4 @@
-export type { NavigationItem } from "./navigation";
+export type { NavigationItem, MegaMenuKey } from "./navigation";
 export type {
   Service,
   ServiceCategory,

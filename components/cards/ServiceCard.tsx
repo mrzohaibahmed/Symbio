@@ -35,7 +35,7 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
               <span className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent">
                 <Icon className="h-4.5 w-4.5" aria-hidden="true" />
               </span>
-              <h3 className="heading-font text-xl font-bold text-foreground md:text-2xl">
+              <h3 className="heading-font text-xl font-bold text-accent md:text-2xl">
                 {service.title}
               </h3>
             </div>

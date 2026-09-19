@@ -63,7 +63,7 @@ export function HiringProcessSection({ className }: HiringProcessSectionProps) {
                     </div>
 
                     {/* Step Title for Mobile (displayed beside indicator) */}
-                    <h3 className="heading-font ml-4 text-base font-bold tracking-tight text-foreground md:hidden">
+                    <h3 className="heading-font ml-4 text-base font-bold tracking-tight text-accent md:hidden">
                       {step.title}
                     </h3>
                   </div>
@@ -72,7 +72,7 @@ export function HiringProcessSection({ className }: HiringProcessSectionProps) {
                   <div className="mt-3 md:mt-5 flex-1 flex flex-col justify-between rounded-2xl border border-border/60 bg-card p-6 shadow-xs transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 group-hover:border-accent/35 group-hover:shadow-md group-hover:shadow-accent/5 ml-15 md:ml-0">
                     <div>
                       {/* Step Title for Tablet & Desktop (displayed inside card top) */}
-                      <h3 className="heading-font hidden md:block text-lg font-bold tracking-tight text-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-accent-light">
+                      <h3 className="heading-font hidden md:block text-lg font-bold tracking-tight text-accent transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-accent-light">
                         {step.title}
                       </h3>
 

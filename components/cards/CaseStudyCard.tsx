@@ -31,7 +31,7 @@ export function CaseStudyCard({ caseStudy, className }: CaseStudyCardProps) {
         <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
           Case Study Preview
         </p>
-        <h3 className="heading-font mt-2 text-2xl font-semibold text-foreground">
+        <h3 className="heading-font mt-2 text-2xl font-semibold text-accent">
           {caseStudy.title}
         </h3>
 

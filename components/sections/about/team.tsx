@@ -312,7 +312,7 @@ export function AboutTeamSection() {
                 <span className="font-mono text-xs font-bold tracking-widest text-accent">
                   {departmentLabels[activeMember.department].toUpperCase()}
                 </span>
-                <h3 className="heading-font mt-1 text-2xl font-extrabold text-foreground md:text-3xl">
+                <h3 className="heading-font mt-1 text-2xl font-extrabold text-accent md:text-3xl">
                   {activeMember.name}
                 </h3>
                 <p className="mt-1 text-base font-semibold text-accent leading-snug">
@@ -407,7 +407,7 @@ export function AboutTeamSection() {
               <span className="text-xs font-bold uppercase tracking-wider text-accent mb-3 block">
                 Work With Us
               </span>
-              <h3 className="heading-font text-2xl font-extrabold text-foreground md:text-3xl whitespace-pre-line">
+              <h3 className="heading-font text-2xl font-extrabold text-accent md:text-3xl whitespace-pre-line">
                 {teamSectionContent.ctaTitle}
               </h3>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg max-w-2xl">

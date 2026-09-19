@@ -18,7 +18,7 @@ export function ServiceOverviewSection({ service }: { service: Service }) {
         </FadeUp>
         <FadeUp delay={0.1}>
           <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
-            <h3 className="heading-font text-lg font-semibold text-foreground">
+            <h3 className="heading-font text-lg font-semibold text-accent">
               At a glance
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -102,7 +102,7 @@ export function ServiceProcessSection({ service }: { service: Service }) {
             <span className="heading-font inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
               {step.step}
             </span>
-            <h3 className="heading-font mt-4 text-lg font-semibold text-foreground">
+            <h3 className="heading-font mt-4 text-lg font-semibold text-accent">
               {step.title}
             </h3>
             <p className="mt-2 text-sm text-muted-foreground">{step.description}</p>

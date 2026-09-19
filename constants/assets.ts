@@ -15,8 +15,6 @@ export const imageAssets = {
   heroCareers: "/images/hero/careers.jpg",
   heroContact: "/images/hero/contact.jpg",
   heroJob: "/images/hero/job.jpg",
-  officeAustin: "/images/offices/austin.jpg",
-  officeDallas: "/images/offices/dallas.jpg",
 } as const;
 
 export function clientLogoPath(id: string): string {

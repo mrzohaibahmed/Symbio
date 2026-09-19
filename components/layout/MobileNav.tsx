@@ -7,7 +7,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { consultationCta, mainNavigation, services } from "@/constants";
+import { consultationCta, mainNavigation } from "@/constants";
+import { megaMenuContent } from "@/constants/megaMenu";
 import { Logo } from "@/components/shared/Logo";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 import { cn, isActivePath } from "@/utils";
@@ -30,7 +31,7 @@ export function MobileNav({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false);
-  const [servicesOpen, setServicesOpen] = React.useState(false);
+  const [openSection, setOpenSection] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     setOpen(false);
@@ -56,7 +57,7 @@ export function MobileNav({
       </Dialog.Trigger>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-brand-navy/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out" />
+        <Dialog.Overlay className="fixed inset-0 z-50 bg-brand-black/60 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out" />
         <Dialog.Content
           className="fixed inset-y-0 right-0 z-50 flex w-[min(100%,22rem)] flex-col gradient-navy shadow-2xl outline-none"
           aria-describedby={undefined}
@@ -86,7 +87,8 @@ export function MobileNav({
                 <ul className="flex flex-col gap-1">
                   {mainNavigation.map((item, i) => {
                     const active = isActivePath(pathname, item.href);
-                    const isServices = item.label === "Services";
+                    const content = item.megaMenu ? megaMenuContent[item.megaMenu] : undefined;
+                    const isSectionOpen = openSection === item.href;
 
                     return (
                       <motion.li
@@ -96,48 +98,56 @@ export function MobileNav({
                         animate="visible"
                         variants={itemVariants}
                       >
-                        {isServices ? (
+                        {content ? (
                           <div>
                             <button
                               type="button"
-                              onClick={() => setServicesOpen(!servicesOpen)}
+                              onClick={() => setOpenSection(isSectionOpen ? null : item.href)}
                               className={cn(
                                 "flex w-full items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium transition-all",
                                 active
                                   ? "bg-white/10 text-accent-light"
                                   : "text-white/80 hover:bg-white/5 hover:text-white",
                               )}
+                              aria-expanded={isSectionOpen}
                             >
-                              Services
+                              {item.label}
                               <ChevronRight
                                 className={cn(
                                   "h-4 w-4 transition-transform duration-200",
-                                  servicesOpen && "rotate-90",
+                                  isSectionOpen && "rotate-90",
                                 )}
                                 aria-hidden="true"
                               />
                             </button>
-                            {servicesOpen && (
-                              <ul className="ml-4 mt-1 space-y-0.5 border-l border-white/10 pl-4">
-                                {services.map((service) => (
-                                  <li key={service.id}>
-                                    <Link
-                                      href={service.href}
-                                      className="block rounded-lg px-3 py-2 text-sm text-white/60 transition-colors hover:text-accent-light"
-                                    >
-                                      {service.title}
-                                    </Link>
-                                  </li>
+                            {isSectionOpen && (
+                              <div className="ml-4 mt-1 space-y-4 border-l border-white/10 pl-4">
+                                {content.columns.map((column) => (
+                                  <div key={column.heading}>
+                                    <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/40">
+                                      {column.heading}
+                                    </p>
+                                    <ul className="space-y-0.5">
+                                      {column.links.map((link) => (
+                                        <li key={link.label}>
+                                          <Link
+                                            href={link.href}
+                                            className="block rounded-lg px-3 py-2 text-sm text-white/60 transition-colors hover:text-accent-light"
+                                          >
+                                            {link.label}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
                                 ))}
-                                <li>
-                                  <Link
-                                    href="/services"
-                                    className="block rounded-lg px-3 py-2 text-sm font-semibold text-accent-light transition-colors hover:text-white"
-                                  >
-                                    View All →
-                                  </Link>
-                                </li>
-                              </ul>
+                                <Link
+                                  href={content.viewAll.href}
+                                  className="block rounded-lg px-3 py-2 text-sm font-semibold text-accent-light transition-colors hover:text-white"
+                                >
+                                  {content.viewAll.label} →
+                                </Link>
+                              </div>
                             )}
                           </div>
                         ) : (

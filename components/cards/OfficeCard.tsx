@@ -39,7 +39,7 @@ export function OfficeCard({ office, className }: OfficeCardProps) {
           <span className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent">
             <MapPin className="h-4.5 w-4.5" aria-hidden="true" />
           </span>
-          <h3 className="heading-font text-xl font-semibold text-foreground">
+          <h3 className="heading-font text-xl font-semibold text-accent">
             {office.name}
           </h3>
         </div>

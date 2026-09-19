@@ -138,7 +138,7 @@ export function ContactInteractiveSection() {
                 <span className="text-xs font-bold uppercase tracking-wider text-accent">
                   Why Choose Symbio
                 </span>
-                <h2 className="heading-font mt-2 text-2xl font-bold text-foreground">
+                <h2 className="heading-font mt-2 text-2xl font-bold text-accent">
                   Enterprise Advisory Built on Trust
                 </h2>
 
@@ -160,7 +160,7 @@ export function ContactInteractiveSection() {
             {/* Office Information */}
             <FadeUp delay={0.05}>
               <div className="border-b border-border/40 pb-8 space-y-4">
-                <h3 className="heading-font text-lg font-bold text-foreground">
+                <h3 className="heading-font text-lg font-bold text-accent">
                   Office Contact & Hours
                 </h3>
                 
@@ -213,7 +213,7 @@ export function ContactInteractiveSection() {
                 <span className="text-xs font-bold uppercase tracking-wider text-accent">
                   Engagement Process
                 </span>
-                <h3 className="heading-font mt-1 text-xl font-bold text-foreground">
+                <h3 className="heading-font mt-1 text-xl font-bold text-accent">
                   What Happens Next
                 </h3>
 
@@ -224,7 +224,7 @@ export function ContactInteractiveSection() {
                         {item.step}
                       </span>
                       <div>
-                        <h4 className="heading-font text-base font-bold text-foreground">
+                        <h4 className="heading-font text-base font-bold text-accent">
                           {item.title}
                         </h4>
                         <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
@@ -299,7 +299,7 @@ export function ContactInteractiveSection() {
                       transition={{ duration: 0.25 }}
                     >
                       <div className="mb-6 border-b border-border/40 pb-4">
-                        <h3 className="heading-font text-2xl font-bold text-foreground">
+                        <h3 className="heading-font text-2xl font-bold text-accent">
                           Book a Confidential Consultation
                         </h3>
                         <p className="mt-1 text-sm text-muted-foreground">
@@ -320,7 +320,7 @@ export function ContactInteractiveSection() {
                       transition={{ duration: 0.25 }}
                     >
                       <div className="mb-6 border-b border-border/40 pb-4">
-                        <h3 className="heading-font text-2xl font-bold text-foreground">
+                        <h3 className="heading-font text-2xl font-bold text-accent">
                           Send Us a Message
                         </h3>
                         <p className="mt-1 text-sm text-muted-foreground">

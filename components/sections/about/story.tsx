@@ -22,7 +22,7 @@ export function AboutStorySection() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h3 className="heading-font text-xl font-bold text-foreground">Mission</h3>
+            <h3 className="heading-font text-xl font-bold text-accent">Mission</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {companyStory.mission}
             </p>
@@ -36,7 +36,7 @@ export function AboutStorySection() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
               </svg>
             </div>
-            <h3 className="heading-font text-xl font-bold text-foreground">Vision</h3>
+            <h3 className="heading-font text-xl font-bold text-accent">Vision</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {companyStory.vision}
             </p>
@@ -46,7 +46,7 @@ export function AboutStorySection() {
 
       <div className="mt-14">
         <FadeUp>
-          <h3 className="heading-font mb-6 text-2xl font-bold text-foreground">
+          <h3 className="heading-font mb-6 text-2xl font-bold text-accent">
             Core Values
           </h3>
         </FadeUp>

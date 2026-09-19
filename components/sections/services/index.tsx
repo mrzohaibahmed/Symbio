@@ -305,7 +305,7 @@ export function ServicesSection({ className }: ServicesSectionProps) {
                   </span>
                 </div>
 
-                <h3 className="heading-font text-2xl font-extrabold text-foreground md:text-3xl lg:text-4xl">
+                <h3 className="heading-font text-2xl font-extrabold text-accent md:text-3xl lg:text-4xl">
                   {activeService.title}
                 </h3>
 

@@ -44,7 +44,7 @@ export function Timeline({ items, className }: TimelineProps) {
                     <p className="heading-font text-sm font-semibold uppercase tracking-[0.14em] text-primary">
                       {item.year}
                     </p>
-                    <h3 className="heading-font mt-2 text-xl font-semibold text-foreground">
+                    <h3 className="heading-font mt-2 text-xl font-semibold text-accent">
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -65,7 +65,7 @@ export function Timeline({ items, className }: TimelineProps) {
                     <p className="heading-font text-sm font-semibold uppercase tracking-[0.14em] text-primary">
                       {item.year}
                     </p>
-                    <h3 className="heading-font mt-2 text-lg font-semibold text-foreground">
+                    <h3 className="heading-font mt-2 text-lg font-semibold text-accent">
                       {item.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

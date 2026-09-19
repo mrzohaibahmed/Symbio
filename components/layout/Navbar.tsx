@@ -3,11 +3,13 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { consultationCta, mainNavigation, services } from "@/constants";
+import { consultationCta, mainNavigation } from "@/constants";
+import { megaMenuContent } from "@/constants/megaMenu";
 import { Container } from "@/components/layout/Container";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { MegaMenuPanel } from "@/components/layout/MegaMenuPanel";
 import { Logo } from "@/components/shared/Logo";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 import { MagneticButton } from "@/components/animations";
@@ -17,9 +19,9 @@ import { usePrefersReducedMotion } from "@/components/animations/use-prefers-red
 export function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = React.useState(false);
-  const [megaOpen, setMegaOpen] = React.useState(false);
+  const [openMenu, setOpenMenu] = React.useState<string | null>(null);
   const reduceMotion = usePrefersReducedMotion();
-  const megaRef = React.useRef<HTMLLIElement>(null);
+  const navRef = React.useRef<HTMLUListElement>(null);
 
   React.useEffect(() => {
     const onScroll = () => {
@@ -31,23 +33,30 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mega menu on route change
+  // Close open mega menu on route change
   React.useEffect(() => {
-    setMegaOpen(false);
+    setOpenMenu(null);
   }, [pathname]);
 
-  // Close mega menu on outside click
+  // Close open mega menu on outside click / Escape
   React.useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (megaRef.current && !megaRef.current.contains(e.target as Node)) {
-        setMegaOpen(false);
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenMenu(null);
       }
     };
-    if (megaOpen) {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenMenu(null);
+    };
+    if (openMenu) {
       document.addEventListener("click", handleClick);
-      return () => document.removeEventListener("click", handleClick);
+      document.addEventListener("keydown", handleKey);
+      return () => {
+        document.removeEventListener("click", handleClick);
+        document.removeEventListener("keydown", handleKey);
+      };
     }
-  }, [megaOpen]);
+  }, [openMenu]);
 
   const isHome = pathname === "/";
 
@@ -66,8 +75,8 @@ export function Navbar() {
           ? undefined
           : {
             boxShadow: scrolled
-              ? "0 4px 30px -8px rgba(11, 31, 58, 0.12)"
-              : "0 0 0 0 rgba(11, 31, 58, 0)",
+              ? "0 4px 30px -8px rgba(10, 10, 12, 0.12)"
+              : "0 0 0 0 rgba(10, 10, 12, 0)",
           }
       }
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -76,18 +85,16 @@ export function Navbar() {
         <Logo variant={scrolled ? "default" : isHome ? "white" : "white"} />
 
         <nav aria-label="Primary" className="hidden lg:block">
-          <ul className="flex items-center gap-2">
+          <ul ref={navRef} className="flex items-center gap-2">
             {mainNavigation.map((item) => {
               const active = isActivePath(pathname, item.href);
-              const isServices = item.label === "Services";
+              const menuKey = item.megaMenu;
+              const isOpen = menuKey ? openMenu === menuKey : false;
+              const content = menuKey ? megaMenuContent[menuKey] : undefined;
 
               return (
-                <li
-                  key={item.href}
-                  className="relative"
-                  ref={isServices ? megaRef : undefined}
-                >
-                  {isServices ? (
+                <li key={item.href} className="relative">
+                  {content ? (
                     <>
                       <button
                         type="button"
@@ -102,14 +109,14 @@ export function Navbar() {
                               ? "text-white"
                               : "text-white/80 hover:text-white hover:bg-white/10",
                         )}
-                        aria-expanded={megaOpen}
-                        onClick={() => setMegaOpen(!megaOpen)}
+                        aria-expanded={isOpen}
+                        onClick={() => setOpenMenu(isOpen ? null : menuKey!)}
                       >
                         {item.label}
                         <ChevronDown
                           className={cn(
                             "h-3.5 w-3.5 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                            megaOpen && "rotate-180",
+                            isOpen && "rotate-180",
                           )}
                           aria-hidden="true"
                         />
@@ -118,39 +125,11 @@ export function Navbar() {
                         )}
                       </button>
 
-                      {/* Mega dropdown */}
-                      {megaOpen && (
-                        <motion.div
-                          initial={reduceMotion ? false : { opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                          className="absolute left-1/2 top-full mt-3 w-[28rem] -translate-x-1/2 rounded-2xl border border-border/80 bg-card/95 p-4 shadow-2xl shadow-primary/10 backdrop-blur-xl"
-                        >
-                          <p className="mb-3 px-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                            Our Services
-                          </p>
-                          <div className="grid grid-cols-1 gap-1">
-                            {services.map((service) => (
-                              <Link
-                                key={service.id}
-                                href={service.href}
-                                className="group rounded-xl px-3.5 py-2.5 text-sm font-medium text-foreground transition-all duration-200 hover:bg-accent/8 hover:text-accent"
-                              >
-                                {service.title}
-                              </Link>
-                            ))}
-                          </div>
-                          <div className="mt-3 border-t border-border/60 pt-3">
-                            <Link
-                              href="/services"
-                              className="block rounded-xl px-3.5 py-2 text-sm font-semibold text-accent transition-colors duration-200 hover:bg-accent/8"
-                            >
-                              View All Services →
-                            </Link>
-                          </div>
-                        </motion.div>
-                      )}
+                      <AnimatePresence>
+                        {isOpen ? (
+                          <MegaMenuPanel content={content} reduceMotion={reduceMotion} />
+                        ) : null}
+                      </AnimatePresence>
                     </>
                   ) : (
                     <Link

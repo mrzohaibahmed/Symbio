@@ -9,7 +9,7 @@ interface ChallengeVisualProps {
 
 export function ChallengeVisual({ type }: ChallengeVisualProps) {
   return (
-    <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[440px] rounded-[22px] overflow-hidden bg-gradient-to-b from-[#0F2847]/80 via-[#0B1F3A] to-[#071527] border border-white/10 shadow-2xl flex items-center justify-center group">
+    <div className="relative w-full h-[320px] sm:h-[380px] lg:h-[440px] rounded-[22px] overflow-hidden bg-gradient-to-b from-[#1A1A1A]/80 via-[#111111] to-[#000000] border border-white/10 shadow-2xl flex items-center justify-center group">
       {/* Soft Ambient Radial Backdrop */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full bg-accent/15 blur-3xl" />
@@ -75,14 +75,14 @@ function ArchitecturalGridVisual() {
       />
       <motion.rect
         x="100" y="70" width="200" height="180" rx="8"
-        stroke="rgba(15,157,122,0.3)" strokeWidth="1.5"
+        stroke="rgba(225,29,46,0.3)" strokeWidth="1.5"
       />
 
       {/* Perspective Architectural Lines */}
-      <line x1="60" y1="40" x2="100" y2="70" stroke="rgba(18,196,149,0.4)" strokeWidth="1.5" />
-      <line x1="340" y1="40" x2="300" y2="70" stroke="rgba(18,196,149,0.4)" strokeWidth="1.5" />
-      <line x1="60" y1="280" x2="100" y2="250" stroke="rgba(18,196,149,0.4)" strokeWidth="1.5" />
-      <line x1="340" y1="280" x2="300" y2="250" stroke="rgba(18,196,149,0.4)" strokeWidth="1.5" />
+      <line x1="60" y1="40" x2="100" y2="70" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" />
+      <line x1="340" y1="40" x2="300" y2="70" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" />
+      <line x1="60" y1="280" x2="100" y2="250" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" />
+      <line x1="340" y1="280" x2="300" y2="250" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" />
 
       {/* Crosshairs & Center Node */}
       <line x1="200" y1="40" x2="200" y2="280" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
@@ -90,16 +90,16 @@ function ArchitecturalGridVisual() {
 
       {/* Floating Node Spheres */}
       <motion.circle
-        cx="200" cy="160" r="8" fill="#0F9D7A"
+        cx="200" cy="160" r="8" fill="#E30613"
         animate={{ scale: [1, 1.25, 1] }}
         transition={{ duration: 2.5, repeat: Infinity }}
       />
-      <circle cx="200" cy="160" r="16" stroke="rgba(18,196,149,0.5)" strokeWidth="1" />
+      <circle cx="200" cy="160" r="16" stroke="rgba(255,71,87,0.5)" strokeWidth="1" />
 
-      <circle cx="100" cy="70" r="4" fill="#12C495" />
-      <circle cx="300" cy="70" r="4" fill="#12C495" />
-      <circle cx="100" cy="250" r="4" fill="#12C495" />
-      <circle cx="300" cy="250" r="4" fill="#12C495" />
+      <circle cx="100" cy="70" r="4" fill="#ED1C24" />
+      <circle cx="300" cy="70" r="4" fill="#ED1C24" />
+      <circle cx="100" cy="250" r="4" fill="#ED1C24" />
+      <circle cx="300" cy="250" r="4" fill="#ED1C24" />
 
       {/* Floating Horizontal Accent Bar */}
       <motion.rect
@@ -110,9 +110,9 @@ function ArchitecturalGridVisual() {
 
       <defs>
         <linearGradient id="grad-arch" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#0F9D7A" stopOpacity="0" />
-          <stop offset="50%" stopColor="#12C495" stopOpacity="1" />
-          <stop offset="100%" stopColor="#0F9D7A" stopOpacity="0" />
+          <stop offset="0%" stopColor="#E30613" stopOpacity="0" />
+          <stop offset="50%" stopColor="#ED1C24" stopOpacity="1" />
+          <stop offset="100%" stopColor="#E30613" stopOpacity="0" />
         </linearGradient>
       </defs>
     </svg>
@@ -124,36 +124,36 @@ function WorkflowNetworkVisual() {
     <svg className="w-full h-full max-w-[360px] max-h-[300px]" viewBox="0 0 400 320" fill="none">
       {/* Connecting Network Paths */}
       <path d="M 60 160 Q 140 60 200 160 T 340 160" stroke="rgba(255,255,255,0.15)" strokeWidth="1.5" fill="none" />
-      <path d="M 60 160 Q 140 260 200 160 T 340 160" stroke="rgba(15,157,122,0.3)" strokeWidth="1.5" fill="none" />
+      <path d="M 60 160 Q 140 260 200 160 T 340 160" stroke="rgba(225,29,46,0.3)" strokeWidth="1.5" fill="none" />
 
       {/* Animated Data Pulses */}
       <motion.circle
-        cx="130" cy="110" r="4" fill="#12C495"
+        cx="130" cy="110" r="4" fill="#ED1C24"
         animate={{ opacity: [0.2, 1, 0.2] }}
         transition={{ duration: 1.8, repeat: Infinity }}
       />
       <motion.circle
-        cx="270" cy="210" r="4" fill="#12C495"
+        cx="270" cy="210" r="4" fill="#ED1C24"
         animate={{ opacity: [0.2, 1, 0.2] }}
         transition={{ duration: 2.2, repeat: Infinity, delay: 0.4 }}
       />
 
       {/* Central Hub & Satellite Nodes */}
-      <circle cx="200" cy="160" r="28" fill="rgba(15,157,122,0.15)" stroke="#0F9D7A" strokeWidth="1.5" />
-      <circle cx="200" cy="160" r="12" fill="#12C495" />
+      <circle cx="200" cy="160" r="28" fill="rgba(225,29,46,0.15)" stroke="#E30613" strokeWidth="1.5" />
+      <circle cx="200" cy="160" r="12" fill="#ED1C24" />
 
       <circle cx="70" cy="160" r="10" fill="rgba(30,41,59,0.8)" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" />
       <circle cx="330" cy="160" r="10" fill="rgba(30,41,59,0.8)" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" />
 
-      <circle cx="140" cy="70" r="8" fill="rgba(30,41,59,0.8)" stroke="#0F9D7A" strokeWidth="1.5" />
-      <circle cx="260" cy="70" r="8" fill="rgba(30,41,59,0.8)" stroke="#0F9D7A" strokeWidth="1.5" />
+      <circle cx="140" cy="70" r="8" fill="rgba(30,41,59,0.8)" stroke="#E30613" strokeWidth="1.5" />
+      <circle cx="260" cy="70" r="8" fill="rgba(30,41,59,0.8)" stroke="#E30613" strokeWidth="1.5" />
 
-      <circle cx="140" cy="250" r="8" fill="rgba(30,41,59,0.8)" stroke="#0F9D7A" strokeWidth="1.5" />
-      <circle cx="260" cy="250" r="8" fill="rgba(30,41,59,0.8)" stroke="#0F9D7A" strokeWidth="1.5" />
+      <circle cx="140" cy="250" r="8" fill="rgba(30,41,59,0.8)" stroke="#E30613" strokeWidth="1.5" />
+      <circle cx="260" cy="250" r="8" fill="rgba(30,41,59,0.8)" stroke="#E30613" strokeWidth="1.5" />
 
       {/* Orbit Ring */}
       <motion.circle
-        cx="200" cy="160" r="60" stroke="rgba(18,196,149,0.25)" strokeWidth="1" strokeDasharray="6 6" fill="none"
+        cx="200" cy="160" r="60" stroke="rgba(255,71,87,0.25)" strokeWidth="1" strokeDasharray="6 6" fill="none"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         style={{ transformOrigin: "200px 160px" }}
@@ -172,27 +172,27 @@ function SecurityMeshVisual() {
       />
       <polygon
         points="200,60 290,105 290,215 200,260 110,215 110,105"
-        stroke="rgba(15,157,122,0.3)" strokeWidth="1.5" fill="rgba(15,157,122,0.05)"
+        stroke="rgba(225,29,46,0.3)" strokeWidth="1.5" fill="rgba(225,29,46,0.05)"
       />
 
       {/* Internal Security Control Node */}
       <motion.polygon
         points="200,90 260,120 260,200 200,230 140,200 140,120"
-        stroke="#12C495" strokeWidth="2" fill="rgba(18,196,149,0.15)"
+        stroke="#ED1C24" strokeWidth="2" fill="rgba(255,71,87,0.15)"
         animate={{ scale: [0.97, 1.03, 0.97] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         style={{ transformOrigin: "200px 160px" }}
       />
 
       {/* Central Lock Emblem Node */}
-      <circle cx="200" cy="160" r="16" fill="#0F9D7A" />
+      <circle cx="200" cy="160" r="16" fill="#E30613" />
       <path d="M 194 160 L 206 160 L 200 150 Z" fill="#ffffff" />
       <rect x="194" y="160" width="12" height="10" rx="2" fill="#ffffff" />
 
       {/* Control Scan Beam */}
       <motion.line
         x1="110" y1="160" x2="290" y2="160"
-        stroke="rgba(18,196,149,0.7)" strokeWidth="2"
+        stroke="rgba(255,71,87,0.7)" strokeWidth="2"
         animate={{ y1: [80, 240, 80], y2: [80, 240, 80] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -215,13 +215,13 @@ function RegulatoryLinesVisual() {
           <g key={i}>
             <rect
               x={x} y={y} width="16" height={h} rx="4"
-              fill={isAccent ? "rgba(18,196,149,0.35)" : "rgba(255,255,255,0.08)"}
-              stroke={isAccent ? "#12C495" : "rgba(255,255,255,0.15)"}
+              fill={isAccent ? "rgba(255,71,87,0.35)" : "rgba(255,255,255,0.08)"}
+              stroke={isAccent ? "#ED1C24" : "rgba(255,255,255,0.15)"}
               strokeWidth="1"
             />
             {isAccent && (
               <motion.circle
-                cx={x + 8} cy={y - 8} r="3" fill="#12C495"
+                cx={x + 8} cy={y - 8} r="3" fill="#ED1C24"
                 animate={{ scale: [1, 1.4, 1] }}
                 transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
               />
@@ -233,7 +233,7 @@ function RegulatoryLinesVisual() {
       {/* Compliance Threshold Line */}
       <motion.line
         x1="50" y1="120" x2="350" y2="120"
-        stroke="#0F9D7A" strokeWidth="2" strokeDasharray="6 4"
+        stroke="#E30613" strokeWidth="2" strokeDasharray="6 4"
         animate={{ opacity: [0.4, 0.9, 0.4] }}
         transition={{ duration: 3, repeat: Infinity }}
       />
@@ -250,7 +250,7 @@ function StrategicRoadmapVisual() {
       {/* Horizon Vector Curves */}
       <path
         d="M 50 240 C 120 200, 180 120, 350 70"
-        stroke="#0F9D7A" strokeWidth="2.5" fill="none"
+        stroke="#E30613" strokeWidth="2.5" fill="none"
       />
       <path
         d="M 50 260 C 140 230, 220 180, 350 140"
@@ -265,11 +265,11 @@ function StrategicRoadmapVisual() {
         { cx: 350, cy: 70, label: "GOAL" },
       ].map((node, index) => (
         <g key={node.label}>
-          <circle cx={node.cx} cy={node.cy} r="10" fill="#0B1F3A" stroke="#12C495" strokeWidth="2" />
-          <circle cx={node.cx} cy={node.cy} r="4" fill="#12C495" />
+          <circle cx={node.cx} cy={node.cy} r="10" fill="#111111" stroke="#ED1C24" strokeWidth="2" />
+          <circle cx={node.cx} cy={node.cy} r="4" fill="#ED1C24" />
           {index === 3 && (
             <motion.circle
-              cx={node.cx} cy={node.cy} r="18" stroke="rgba(18,196,149,0.4)" strokeWidth="1.5" fill="none"
+              cx={node.cx} cy={node.cy} r="18" stroke="rgba(255,71,87,0.4)" strokeWidth="1.5" fill="none"
               animate={{ scale: [1, 1.3, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
@@ -280,7 +280,7 @@ function StrategicRoadmapVisual() {
       {/* Target Arrow Vector */}
       <motion.path
         d="M 330 80 L 350 70 L 340 90"
-        stroke="#12C495" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"
+        stroke="#ED1C24" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"
         animate={{ x: [0, 4, 0], y: [0, -4, 0] }}
         transition={{ duration: 1.8, repeat: Infinity }}
       />
@@ -304,15 +304,15 @@ function FinancialMatrixVisual() {
           <line x1="200" y1={y} x2="260" y2={y} stroke="rgba(255,255,255,0.1)" strokeWidth="2" strokeLinecap="round" />
           <rect
             x="280" y={y - 6} width="40" height="12" rx="3"
-            fill={idx === 1 ? "rgba(18,196,149,0.25)" : "rgba(255,255,255,0.06)"}
-            stroke={idx === 1 ? "#12C495" : "none"}
+            fill={idx === 1 ? "rgba(255,71,87,0.25)" : "rgba(255,255,255,0.06)"}
+            stroke={idx === 1 ? "#ED1C24" : "none"}
           />
         </g>
       ))}
 
       {/* Ledger Audit Checkmark Marker */}
       <motion.circle
-        cx="300" cy="160" r="10" fill="#0F9D7A"
+        cx="300" cy="160" r="10" fill="#E30613"
         animate={{ scale: [1, 1.15, 1] }}
         transition={{ duration: 2, repeat: Infinity }}
       />

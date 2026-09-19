@@ -6,3 +6,5 @@ export { SecondaryButton } from "./SecondaryButton";
 export type { SecondaryButtonProps } from "./SecondaryButton";
 export { OutlineButton } from "./OutlineButton";
 export type { OutlineButtonProps } from "./OutlineButton";
+export { Carousel } from "./Carousel";
+export type { CarouselProps } from "./Carousel";

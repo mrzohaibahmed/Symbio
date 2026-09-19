@@ -16,7 +16,7 @@ export function CertificationCard({
         <span className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-accent font-bold text-xs uppercase tracking-wider">
           {certification.badgeLabel}
         </span>
-        <h3 className="heading-font text-lg font-bold text-foreground">
+        <h3 className="heading-font text-lg font-bold text-accent">
           {certification.title}
         </h3>
       </div>

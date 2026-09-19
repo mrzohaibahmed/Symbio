@@ -2,11 +2,11 @@ import type { NavigationItem } from "@/types";
 
 export const mainNavigation: NavigationItem[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Industries", href: "/industries" },
+  { label: "About", href: "/about", megaMenu: "about" },
+  { label: "Services", href: "/services", megaMenu: "services" },
+  { label: "Industries", href: "/industries", megaMenu: "industries" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Careers", href: "/careers" },
+  { label: "Careers", href: "/careers", megaMenu: "careers" },
   { label: "Contact", href: "/contact" },
 ];
 

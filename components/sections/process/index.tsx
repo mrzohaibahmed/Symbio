@@ -38,7 +38,7 @@ export function ProcessSection({ className }: ProcessSectionProps) {
                 <span className="editorial-number block text-5xl font-extrabold text-accent/80 md:text-6xl">
                   {formattedNumber}
                 </span>
-                <h3 className="heading-font mt-4 text-xl font-bold text-foreground md:text-2xl">
+                <h3 className="heading-font mt-4 text-xl font-bold text-accent md:text-2xl">
                   {step.title}
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground">

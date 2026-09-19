@@ -145,7 +145,7 @@ export default function CareersPage() {
                     </div>
 
                     {/* Title & Description */}
-                    <h3 className="heading-font text-xl font-bold tracking-tight text-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-accent-light">
+                    <h3 className="heading-font text-xl font-bold tracking-tight text-accent transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-accent-light">
                       {item.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-muted-foreground max-w-prose">

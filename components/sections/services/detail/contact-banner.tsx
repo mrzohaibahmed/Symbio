@@ -10,7 +10,7 @@ export function ServiceContactBanner() {
       <FadeUp>
         <div className="flex flex-col items-start justify-between gap-6 rounded-xl border border-border bg-card p-6 shadow-sm md:flex-row md:items-center md:p-8">
           <div>
-            <h2 className="heading-font text-2xl font-semibold text-foreground">
+            <h2 className="heading-font text-2xl font-semibold text-accent">
               Prefer to talk it through?
             </h2>
             <p className="mt-2 max-w-xl text-sm text-muted-foreground">
