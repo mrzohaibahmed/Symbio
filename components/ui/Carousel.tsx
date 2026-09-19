@@ -57,7 +57,11 @@ export function Carousel({
 
   return (
     <div
-      className={cn("relative", className)}
+      role="group"
+      aria-roledescription="carousel"
+      aria-label={ariaLabel}
+      tabIndex={itemCount > 1 ? 0 : undefined}
+      className={cn("relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-2xl", className)}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -66,12 +70,22 @@ export function Carousel({
           setPaused(false);
         }
       }}
+      onKeyDown={(event) => {
+        if (itemCount <= 1) return;
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          goTo(index + 1, 1);
+        } else if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          goTo(index - 1, -1);
+        }
+      }}
     >
       <AnimatePresence mode="wait" custom={direction}>
         <motion.div
           key={index}
           custom={direction}
-          drag={itemCount > 1 ? "x" : false}
+          drag={itemCount > 1 && !reduceMotion ? "x" : false}
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
           onDragEnd={(_, info) => {
@@ -80,9 +94,9 @@ export function Carousel({
           }}
           initial={reduceMotion ? false : { opacity: 0, x: direction * 30 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: direction * -30 }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className={cn("cursor-grab active:cursor-grabbing", itemClassName)}
+          exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: direction * -30 }}
+          transition={{ duration: reduceMotion ? 0.01 : 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className={cn(reduceMotion ? undefined : "cursor-grab active:cursor-grabbing", itemClassName)}
         >
           {renderItem(index)}
         </motion.div>

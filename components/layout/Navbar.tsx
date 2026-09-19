@@ -13,6 +13,7 @@ import { MegaMenuPanel } from "@/components/layout/MegaMenuPanel";
 import { Logo } from "@/components/shared/Logo";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 import { MagneticButton } from "@/components/animations";
+import { easeOutExpo } from "@/components/animations/config";
 import { cn, isActivePath } from "@/utils";
 import { usePrefersReducedMotion } from "@/components/animations/use-prefers-reduced-motion";
 
@@ -121,7 +122,11 @@ export function Navbar() {
                           aria-hidden="true"
                         />
                         {active && (
-                          <span className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-accent transition-all duration-300" />
+                          <motion.span
+                            layoutId="nav-active-indicator"
+                            className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-accent"
+                            transition={reduceMotion ? { duration: 0 } : { duration: 0.3, ease: easeOutExpo }}
+                          />
                         )}
                       </button>
 
@@ -149,7 +154,11 @@ export function Navbar() {
                     >
                       {item.label}
                       {active && (
-                        <span className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-accent transition-all duration-300" />
+                        <motion.span
+                          layoutId="nav-active-indicator"
+                          className="absolute bottom-0 left-4 right-4 h-[2px] rounded-full bg-accent"
+                          transition={reduceMotion ? { duration: 0 } : { duration: 0.3, ease: easeOutExpo }}
+                        />
                       )}
                     </Link>
                   )}

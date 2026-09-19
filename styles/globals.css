@@ -566,4 +566,25 @@
   .animate-pulse-glow {
     animation: none !important;
   }
+
+  /*
+   * Safety net for plain CSS transitions/animations (hover lifts, color
+   * fades, etc). Framer Motion components already branch on
+   * usePrefersReducedMotion in JS; this covers everything else.
+   */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  /* Don't let hover-only lift/shadow treatments get "stuck" after a tap. */
+  .card-hover:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
